@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{2a7abd2f-9c5b-4d5f-80db-fdf05a5ada8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{f5d9370c-38a3-470c-b55e-880812ee2cb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\server">
+      <UniqueIdentifier>{0ff60fb6-d544-402c-b014-b763af5db9f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\util">
+      <UniqueIdentifier>{9412eac3-2d32-4274-9d7a-4e287b5c9a90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\socket">
+      <UniqueIdentifier>{f48409c5-7eae-4dc5-a876-eef41756029d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\exception">
+      <UniqueIdentifier>{f7e596c9-c178-45c9-8649-f5eb2778c4e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\server\http">
+      <UniqueIdentifier>{d5928138-0833-42cd-9271-20a07c2215e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\stream">
+      <UniqueIdentifier>{92b31a28-34fa-4517-aa44-aeaa453d718d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\content">
+      <UniqueIdentifier>{490887fb-e75f-400b-a635-aa3185828b7e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\kumori\kumori.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\server.hpp">
+      <Filter>include\server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\server_config.hpp">
+      <Filter>include\server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\server_context.hpp">
+      <Filter>include\server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\socket.hpp">
+      <Filter>include\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\normal_socket.hpp">
+      <Filter>include\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\interrupted_exception.hpp">
+      <Filter>include\exception</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\exception.hpp">
+      <Filter>include\exception</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\socket_adaptor.hpp">
+      <Filter>include\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\secure_socket.hpp">
+      <Filter>include\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\sync.hpp">
+      <Filter>include\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\invalid_operation_exception.hpp">
+      <Filter>include\exception</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\io_processor.hpp">
+      <Filter>include\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\http_server.hpp">
+      <Filter>include\server\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\http_server_config.hpp">
+      <Filter>include\server\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\http_server_context.hpp">
+      <Filter>include\server\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\http_context.hpp">
+      <Filter>include\server\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\http_request.hpp">
+      <Filter>include\server\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\http_response.hpp">
+      <Filter>include\server\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\http_request_response.hpp">
+      <Filter>include\server\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\http_cookie.hpp">
+      <Filter>include\server\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\date_time_util.hpp">
+      <Filter>include\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\http_status_code.hpp">
+      <Filter>include\server\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\http_entity_header.hpp">
+      <Filter>include\server\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\http_content_encoding.hpp">
+      <Filter>include\server\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\http_method.hpp">
+      <Filter>include\server\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\http_exception.hpp">
+      <Filter>include\exception</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\socket_streambuf.hpp">
+      <Filter>include\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\chunked_decoder.hpp">
+      <Filter>include\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\chunked_encoder.hpp">
+      <Filter>include\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\string_util.hpp">
+      <Filter>include\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\stream_exception.hpp">
+      <Filter>include\exception</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\constant_strings.hpp">
+      <Filter>include\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\uri.hpp">
+      <Filter>include\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\protocol.hpp">
+      <Filter>include\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\uri_util.hpp">
+      <Filter>include\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\char_table.hpp">
+      <Filter>include\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\http_connection_token.hpp">
+      <Filter>include\server\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\stream_util.hpp">
+      <Filter>include\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\null_content.hpp">
+      <Filter>include\content</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
