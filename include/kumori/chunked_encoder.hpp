@@ -21,7 +21,7 @@ namespace kumori
 		template <class Synk>
 		std::streamsize write(Synk& synk, const char_type* s, std::streamsize n)
 		{
-			std::string size_str = to_hex(static_cast<boost::make_unsigned<std::streamsize>::type>(n));
+			std::string size_str = to_hex(static_cast<std::make_unsigned<std::streamsize>::type>(n));
 			if (boost::iostreams::write(synk, size_str.c_str(), size_str.size()) != static_cast<std::streamsize>(size_str.size()))
 				BOOST_THROW_EXCEPTION(stream_exception());
 			if (boost::iostreams::write(synk, "\r\n", 2) != 2)
