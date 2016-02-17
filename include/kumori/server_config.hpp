@@ -11,9 +11,7 @@ namespace kumori
 
 		bool enable_ssl = false;
 		int ssl_port = 443;
-		boost::filesystem::path certificate_chain_file;
-		boost::filesystem::path private_key_file;
-		boost::filesystem::path tmp_dh_file;
+		boost::asio::ssl::context* ssl_context = nullptr;
 
 		std::size_t num_maximum_connections = 10000;
 		std::size_t stack_size_per_connection = 102400;

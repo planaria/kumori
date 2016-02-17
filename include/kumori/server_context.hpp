@@ -65,9 +65,6 @@ namespace kumori
 				{
 				}
 
-				boost::system::error_code err;
-				socket_->raw_socket().close(err);
-
 				socket_.reset();
 			}
 		}

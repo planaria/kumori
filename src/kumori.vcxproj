@@ -148,9 +148,11 @@
     <ClInclude Include="..\include\kumori\char_table.hpp" />
     <ClInclude Include="..\include\kumori\chunked_decoder.hpp" />
     <ClInclude Include="..\include\kumori\chunked_encoder.hpp" />
+    <ClInclude Include="..\include\kumori\client.hpp" />
     <ClInclude Include="..\include\kumori\constant_strings.hpp" />
     <ClInclude Include="..\include\kumori\date_time_util.hpp" />
     <ClInclude Include="..\include\kumori\exception.hpp" />
+    <ClInclude Include="..\include\kumori\client_config.hpp" />
     <ClInclude Include="..\include\kumori\http_connection_token.hpp" />
     <ClInclude Include="..\include\kumori\http_content_encoding.hpp" />
     <ClInclude Include="..\include\kumori\http_context.hpp" />
@@ -158,6 +160,7 @@
     <ClInclude Include="..\include\kumori\http_entity_header.hpp" />
     <ClInclude Include="..\include\kumori\http_exception.hpp" />
     <ClInclude Include="..\include\kumori\http_method.hpp" />
+    <ClInclude Include="..\include\kumori\not_implemented_exception.hpp" />
     <ClInclude Include="..\include\kumori\null_content.hpp" />
     <ClInclude Include="..\include\kumori\http_request.hpp" />
     <ClInclude Include="..\include\kumori\http_request_response.hpp" />

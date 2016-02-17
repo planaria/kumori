@@ -155,6 +155,15 @@
     <ClInclude Include="..\include\kumori\null_content.hpp">
       <Filter>include\content</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\kumori\not_implemented_exception.hpp">
+      <Filter>include\exception</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\client_config.hpp">
+      <Filter>include\server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\client.hpp">
+      <Filter>include\server</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

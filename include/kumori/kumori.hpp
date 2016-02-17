@@ -26,6 +26,9 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/utility.hpp>
 
+#include "server.hpp"
 #include "http_server.hpp"
+
+#include "client.hpp"
 
 #include "io_processor.hpp"

@@ -8,10 +8,22 @@ namespace kumori
 	{
 	public:
 
+		secure_socket(boost::asio::io_service& service, boost::asio::ssl::context& context)
+			: socket_(service)
+			, stream_(socket_, context)
+		{
+		}
+
 		secure_socket(boost::asio::ip::tcp::socket&& socket, boost::asio::ssl::context& context)
 			: socket_(std::move(socket))
 			, stream_(socket_, context)
 		{
+		}
+
+		~secure_socket()
+		{
+			boost::system::error_code err;
+			socket_.close(err);
 		}
 
 		virtual boost::asio::ip::tcp::socket& raw_socket() override

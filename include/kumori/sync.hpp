@@ -29,13 +29,6 @@ namespace kumori
 
 			std::intptr_t param = reinterpret_cast<std::intptr_t>(this);
 			boost::context::jump_fcontext(&original_context_, context_, param);
-
-			if (exception_)
-			{
-				std::exception_ptr p = exception_;
-				exception_ = nullptr;
-				std::rethrow_exception(p);
-			}
 		}
 
 		void suspend()
@@ -43,51 +36,29 @@ namespace kumori
 			current_impl() = nullptr;
 			BOOST_ASSERT(!mutex_.try_lock());
 			boost::context::jump_fcontext(&context_, original_context_, 0);
-
-			if (interrupted_)
-				BOOST_THROW_EXCEPTION(interrupted_exception());
 		}
 
 		template <class Callback>
 		void suspend_for(const boost::posix_time::time_duration& timeout, Callback cancel)
 		{
-			try
-			{
-				timer_.expires_from_now(timeout);
+			timer_.expires_from_now(timeout);
 
-				timer_.async_wait(
-					[&](const boost::system::error_code& error)
-				{
-					resume();
-				});
-			}
-			catch (...)
+			timer_.async_wait(
+				[&](const boost::system::error_code& error)
 			{
-				try
-				{
-					cancel();
-				}
-				catch (...)
-				{
-				}
-
-				suspend();
-				throw;
-			}
+				resume();
+			});
 
 			suspend();
 
 			timer_.cancel();
 
-			try
-			{
-				cancel();
-			}
-			catch (...)
-			{
-			}
+			cancel();
 
 			suspend();
+
+			if (interrupted_)
+				BOOST_THROW_EXCEPTION(interrupted_exception());
 		}
 
 		void interrupt()
@@ -117,7 +88,6 @@ namespace kumori
 			}
 			catch (...)
 			{
-				exception_ = std::current_exception();
 			}
 
 			suspend();
@@ -136,7 +106,6 @@ namespace kumori
 
 		boost::context::fcontext_t context_;
 		boost::context::fcontext_t original_context_;
-		std::exception_ptr exception_;
 
 		std::mutex mutex_;
 

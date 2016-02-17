@@ -88,7 +88,7 @@ namespace kumori
 			if (!res.get_last_modified().empty())
 				stream << "Last-Modified: " << res.get_last_modified() << "\r\n";
 
-			res.cookie().write_response(stream, get_config());
+			res.cookie().write_response(stream, get_config().session_life_time);
 
 			stream << "Server: waterproof\r\n";
 

@@ -28,6 +28,15 @@ namespace kumori
 			setp(output_buffer, output_buffer_end);
 		}
 
+		socket_streambuf(
+			socket& socket,
+			const boost::posix_time::time_duration& timeout,
+			std::vector<char>& input_buffer,
+			std::vector<char>& output_buffer)
+			: socket_streambuf(socket, timeout, input_buffer.data(), input_buffer.size(), output_buffer.data(), output_buffer.size())
+		{
+		}
+
 		virtual int_type underflow() override
 		{
 			if (gptr() == egptr())

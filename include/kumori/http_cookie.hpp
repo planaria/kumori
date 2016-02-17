@@ -1,5 +1,4 @@
 #pragma once
-#include "http_server_config.hpp"
 #include "date_time_util.hpp"
 
 namespace kumori
@@ -92,14 +91,14 @@ namespace kumori
 			return true;
 		}
 
-		void write_response(std::ostream& stream, const http_server_config& config)
+		void write_response(std::ostream& stream, const boost::posix_time::time_duration& life_time)
 		{
 			std::string expires;
 
 			if (!map_.empty())
 			{
 				auto now = boost::posix_time::second_clock::universal_time();
-				expires = format_rfc1123(now + config.session_life_time);
+				expires = format_rfc1123(now + life_time);
 			}
 
 			for (const auto& key_value : map_)
@@ -111,7 +110,7 @@ namespace kumori
 			}
 		}
 
-		void write_request(std::ostream& stream, const http_server_config& config)
+		void write_request(std::ostream& stream)
 		{
 			if (!map_.empty())
 			{

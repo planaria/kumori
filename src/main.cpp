@@ -7,7 +7,8 @@ class application_server : public kumori::http_server<application_server>
 public:
 
 	application_server(boost::asio::io_service& service)
-		: http_server(service)
+		: service_(service)
+		, http_server(service)
 	{
 	}
 
@@ -20,6 +21,8 @@ public:
 	}
 
 private:
+
+	boost::asio::io_service& service_;
 
 };
 

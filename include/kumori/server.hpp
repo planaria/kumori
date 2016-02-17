@@ -48,17 +48,6 @@ namespace kumori
 			{
 				boost::asio::ip::tcp::endpoint ssl_end_point(boost::asio::ip::tcp::v6(), config.ssl_port);
 				ssl_accceptor_ = std::make_unique<acceptor>(service_, ssl_end_point);
-
-				ssl_context_ = std::make_unique<ssl_context>(service_, ssl_context::sslv23);
-
-				ssl_context_->set_options(
-					ssl_context::default_workarounds |
-					ssl_context::no_sslv2 |
-					ssl_context::single_dh_use);
-
-				ssl_context_->use_certificate_chain_file(config.certificate_chain_file.string());
-				ssl_context_->use_private_key_file(config.private_key_file.string(), ssl_context::pem);
-				ssl_context_->use_tmp_dh_file(config.tmp_dh_file.string());
 			}
 
 			std::generate(contexts_.begin(), contexts_.end(),
@@ -104,7 +93,6 @@ namespace kumori
 
 			plain_accceptor_.reset();
 			ssl_accceptor_.reset();
-			ssl_context_.reset();
 
 			contexts_.clear();
 			context_stack_.reset();
@@ -144,7 +132,7 @@ namespace kumori
 
 				std::unique_ptr<socket> socket;
 				if (secure)
-					socket = std::make_unique<secure_socket>(std::move(*raw_socket), *ssl_context_);
+					socket = std::make_unique<secure_socket>(std::move(*raw_socket), *config_.ssl_context);
 				else
 					socket = std::make_unique<normal_socket>(std::move(*raw_socket));
 
@@ -161,12 +149,9 @@ namespace kumori
 		server_config config_;
 
 		typedef boost::asio::ip::tcp::acceptor acceptor;
-		typedef boost::asio::ssl::context ssl_context;
 
 		std::unique_ptr<acceptor> plain_accceptor_;
 		std::unique_ptr<acceptor> ssl_accceptor_;
-
-		std::unique_ptr<ssl_context> ssl_context_;
 
 		std::vector<std::unique_ptr<context>> contexts_;
 		std::unique_ptr<boost::lockfree::stack<context*>> context_stack_;

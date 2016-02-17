@@ -14,7 +14,7 @@ namespace kumori
 
 		std::size_t maximum_path_length = 2048;
 		std::size_t maximum_header_length = 2048;
-		std::size_t maximum_request_content_length = 102400;
+		std::streamsize maximum_request_content_length = 102400;
 
 		bool strict_http = true;
 

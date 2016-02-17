@@ -8,9 +8,20 @@ namespace kumori
 	{
 	public:
 
+		explicit normal_socket(boost::asio::io_service& service)
+			: socket_(service)
+		{
+		}
+
 		explicit normal_socket(boost::asio::ip::tcp::socket&& socket)
 			: socket_(std::move(socket))
 		{
+		}
+
+		~normal_socket()
+		{
+			boost::system::error_code err;
+			socket_.close(err);
 		}
 
 		virtual boost::asio::ip::tcp::socket& raw_socket() override
