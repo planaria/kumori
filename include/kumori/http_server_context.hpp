@@ -90,8 +90,6 @@ namespace kumori
 
 			res.cookie().write_response(stream, get_config().session_life_time);
 
-			stream << "Server: waterproof\r\n";
-
 			stream << "\r\n";
 
 			response_stream_.push(stream);
