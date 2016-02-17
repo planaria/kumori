@@ -13,7 +13,7 @@ namespace kumori
 	public:
 
 		explicit http_server(boost::asio::io_service& service, const http_server_config& config = http_server_config())
-			: server(service)
+			: server(service, config)
 			, config_(config)
 		{
 		}

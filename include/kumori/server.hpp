@@ -13,8 +13,9 @@ namespace kumori
 	{
 	public:
 
-		explicit server(boost::asio::io_service& service)
+		explicit server(boost::asio::io_service& service, const server_config& config = server_config())
 			: service_(service)
+			, config_(config)
 		{
 		}
 
@@ -29,37 +30,36 @@ namespace kumori
 			return running_;
 		}
 
-		void start(const server_config& config = server_config())
+		void start()
 		{
 			if (running_)
 				BOOST_THROW_EXCEPTION(invalid_operation_exception());
 
-			config_ = config;
-			contexts_.resize(config.num_maximum_connections);
-			context_stack_ = std::make_unique<boost::lockfree::stack<context*>>(config.num_maximum_connections);
+			contexts_.resize(config_.num_maximum_connections);
+			context_stack_ = std::make_unique<boost::lockfree::stack<context*>>(config_.num_maximum_connections);
 
-			if (config.enable_plain)
+			if (config_.enable_plain)
 			{
-				boost::asio::ip::tcp::endpoint plain_end_point(boost::asio::ip::tcp::v6(), config.plain_port);
+				boost::asio::ip::tcp::endpoint plain_end_point(boost::asio::ip::tcp::v6(), config_.plain_port);
 				plain_accceptor_ = std::make_unique<acceptor>(service_, plain_end_point);
 			}
 
-			if (config.enable_ssl)
+			if (config_.enable_ssl)
 			{
-				boost::asio::ip::tcp::endpoint ssl_end_point(boost::asio::ip::tcp::v6(), config.ssl_port);
+				boost::asio::ip::tcp::endpoint ssl_end_point(boost::asio::ip::tcp::v6(), config_.ssl_port);
 				ssl_accceptor_ = std::make_unique<acceptor>(service_, ssl_end_point);
 			}
 
 			std::generate(contexts_.begin(), contexts_.end(),
 				[&]()
 			{
-				return std::make_unique<context>(service_, *this, config);
+				return std::make_unique<context>(service_, *this, config_);
 			});
 
-			if (config.enable_plain)
+			if (config_.enable_plain)
 				accept(false);
 
-			if (config.enable_ssl)
+			if (config_.enable_ssl)
 				accept(true);
 
 			running_ = true;

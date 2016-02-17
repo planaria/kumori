@@ -1,7 +1,7 @@
 #pragma once
 #include "http_request.hpp"
 #include "http_response.hpp"
-#include "http_server_config.hpp"
+#include "http_config.hpp"
 
 namespace kumori
 {
@@ -33,7 +33,7 @@ namespace kumori
 
 	protected:
 
-		http_context(std::iostream& stream, const http_server_config& config)
+		http_context(std::iostream& stream, const http_config& config)
 			: stream_(stream)
 			, config_(config)
 		{
@@ -41,11 +41,6 @@ namespace kumori
 
 		~http_context()
 		{
-		}
-
-		const http_server_config& get_config() const
-		{
-			return config_;
 		}
 
 		std::iostream& get_stream()
@@ -205,7 +200,7 @@ namespace kumori
 				if (stream_.get() == '\r')
 				{
 					if (stream_.get() != '\n')
-						OnError();
+						derived().on_error();
 					return;
 				}
 			}
@@ -218,8 +213,8 @@ namespace kumori
 			return static_cast<Derived&>(*this);
 		}
 
-		http_server_config config_;
 		std::iostream& stream_;
+		http_config config_;
 
 		http_request request_;
 		http_response response_;

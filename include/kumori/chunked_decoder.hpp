@@ -17,11 +17,6 @@ namespace kumori
 		{
 		};
 
-		explicit chunked_decoder(std::size_t maximum_chunk_size)
-			: maximum_chunk_size_(maximum_chunk_size)
-		{
-		}
-
 		template <class Source>
 		std::streamsize read(Source& source, char_type* s, std::streamsize n)
 		{
@@ -37,7 +32,7 @@ namespace kumori
 					if (c == boost::iostreams::WOULD_BLOCK)
 						return 0;
 
-					if(buffer_.size() >= maximum_chunk_size_)
+					if(buffer_.size() >= 8)
 						BOOST_THROW_EXCEPTION(stream_exception());
 
 					buffer_.push_back(c);
@@ -84,7 +79,7 @@ namespace kumori
 			if (*remain_ < static_cast<std::size_t>(n))
 				n = *remain_;
 
-			n = io::read(source, s, n);
+			n = boost::iostreams::read(source, s, n);
 			if (n == -1)
 				BOOST_THROW_EXCEPTION(stream_exception());
 
@@ -94,8 +89,6 @@ namespace kumori
 		}
 
 	private:
-
-		std::size_t maximum_chunk_size_;
 
 		std::string buffer_;
 		boost::optional<std::size_t> remain_;

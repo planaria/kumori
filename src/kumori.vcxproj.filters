@@ -134,9 +134,6 @@
     <ClInclude Include="..\include\kumori\constant_strings.hpp">
       <Filter>include\util</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\kumori\uri.hpp">
-      <Filter>include\util</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\kumori\protocol.hpp">
       <Filter>include\util</Filter>
     </ClInclude>
@@ -163,6 +160,21 @@
     </ClInclude>
     <ClInclude Include="..\include\kumori\client.hpp">
       <Filter>include\server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\http_client.hpp">
+      <Filter>include\server\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\http_client_config.hpp">
+      <Filter>include\server\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\http_config.hpp">
+      <Filter>include\server\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\http_parse_exception.hpp">
+      <Filter>include\exception</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\limit_length_filter.hpp">
+      <Filter>include\stream</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

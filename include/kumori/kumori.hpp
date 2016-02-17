@@ -30,5 +30,6 @@
 #include "http_server.hpp"
 
 #include "client.hpp"
+#include "http_client.hpp"
 
 #include "io_processor.hpp"

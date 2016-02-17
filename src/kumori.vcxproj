@@ -153,6 +153,9 @@
     <ClInclude Include="..\include\kumori\date_time_util.hpp" />
     <ClInclude Include="..\include\kumori\exception.hpp" />
     <ClInclude Include="..\include\kumori\client_config.hpp" />
+    <ClInclude Include="..\include\kumori\http_client.hpp" />
+    <ClInclude Include="..\include\kumori\http_client_config.hpp" />
+    <ClInclude Include="..\include\kumori\http_config.hpp" />
     <ClInclude Include="..\include\kumori\http_connection_token.hpp" />
     <ClInclude Include="..\include\kumori\http_content_encoding.hpp" />
     <ClInclude Include="..\include\kumori\http_context.hpp" />
@@ -160,6 +163,8 @@
     <ClInclude Include="..\include\kumori\http_entity_header.hpp" />
     <ClInclude Include="..\include\kumori\http_exception.hpp" />
     <ClInclude Include="..\include\kumori\http_method.hpp" />
+    <ClInclude Include="..\include\kumori\http_parse_exception.hpp" />
+    <ClInclude Include="..\include\kumori\limit_length_filter.hpp" />
     <ClInclude Include="..\include\kumori\not_implemented_exception.hpp" />
     <ClInclude Include="..\include\kumori\null_content.hpp" />
     <ClInclude Include="..\include\kumori\http_request.hpp" />
@@ -186,7 +191,6 @@
     <ClInclude Include="..\include\kumori\stream_util.hpp" />
     <ClInclude Include="..\include\kumori\string_util.hpp" />
     <ClInclude Include="..\include\kumori\sync.hpp" />
-    <ClInclude Include="..\include\kumori\uri.hpp" />
     <ClInclude Include="..\include\kumori\uri_util.hpp" />
   </ItemGroup>
   <ItemGroup>

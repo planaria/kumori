@@ -1,10 +1,14 @@
 #pragma once
+#include "http_config.hpp"
+#include "server_config.hpp"
 #include "http_status_code.hpp"
 
 namespace kumori
 {
 
 	struct http_server_config
+		: public http_config
+		, public server_config
 	{
 
 		std::size_t maximum_keep_alive_requests = 10;
@@ -13,7 +17,6 @@ namespace kumori
 		boost::posix_time::time_duration session_life_time = boost::posix_time::time_duration(8760, 0, 0);
 
 		std::size_t maximum_path_length = 2048;
-		std::size_t maximum_header_length = 2048;
 		std::streamsize maximum_request_content_length = 102400;
 
 		bool strict_http = true;

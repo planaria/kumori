@@ -19,6 +19,7 @@ namespace kumori
 
 		http_server_context(std::iostream& stream, const http_server_config& config)
 			: http_context(stream, config)
+			, config_(config)
 		{
 		}
 
@@ -58,7 +59,7 @@ namespace kumori
 
 			if (res.get_keep_alive_requests() != 0)
 			{
-				int timeout = get_config().keep_alive_timeout.total_seconds();
+				int timeout = config_.keep_alive_timeout.total_seconds();
 				stream << "Connection: Keep-Alive\r\n";
 				stream << "Keep-Alive: timeout=" << timeout << ", max=" << res.get_keep_alive_requests() << "\r\n";
 
@@ -88,7 +89,7 @@ namespace kumori
 			if (!res.get_last_modified().empty())
 				stream << "Last-Modified: " << res.get_last_modified() << "\r\n";
 
-			res.cookie().write_response(stream, get_config().session_life_time);
+			res.cookie().write_response(stream, config_.session_life_time);
 
 			stream << "\r\n";
 
@@ -125,7 +126,7 @@ namespace kumori
 
 			std::string original_path;
 
-			if (!read_token(original_path, ' ', get_config().maximum_path_length))
+			if (!read_token(original_path, ' ', config_.maximum_path_length))
 				BOOST_THROW_EXCEPTION(http_exception(http_status_code::bad_request));
 			if (!is_valid_path(original_path))
 				BOOST_THROW_EXCEPTION(http_exception(http_status_code::bad_request));
@@ -192,7 +193,7 @@ namespace kumori
 
 				if (req.get_content_length())
 				{
-					if (*req.get_content_length() > get_config().maximum_request_content_length)
+					if (*req.get_content_length() > config_.maximum_request_content_length)
 						BOOST_THROW_EXCEPTION(http_exception(http_status_code::request_entity_too_large));
 					forward(stream, request_stream_, *req.get_content_length());
 				}
@@ -213,7 +214,7 @@ namespace kumori
 							break;
 
 						contentLength += length;
-						if (contentLength > get_config().maximum_request_content_length)
+						if (contentLength > config_.maximum_request_content_length)
 							BOOST_THROW_EXCEPTION(http_exception(http_status_code::request_entity_too_large));
 
 						forward(stream, request_stream_, length);
@@ -238,7 +239,7 @@ namespace kumori
 		{
 			http_request& req = request();
 
-			if (get_config().strict_http && req.get_host().empty())
+			if (config_.strict_http && req.get_host().empty())
 				BOOST_THROW_EXCEPTION(http_exception(http_status_code::bad_request));
 			if (req.get_unknown_expectation())
 				BOOST_THROW_EXCEPTION(http_exception(http_status_code::expectation_failed));
@@ -339,6 +340,8 @@ namespace kumori
 		{
 			BOOST_THROW_EXCEPTION(http_exception(http_status_code::bad_request));
 		}
+
+		http_server_config config_;
 
 		std::stringstream request_stream_;
 		boost::iostreams::filtering_ostream response_stream_;
