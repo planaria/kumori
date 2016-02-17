@@ -16,14 +16,13 @@ namespace kumori
 	{
 	public:
 
-		http_client(boost::asio::io_service& service, const std::string& host, const std::string& port, const std::string& path, const http_client_config& config = http_client_config())
+		http_client(boost::asio::io_service& service, const std::string& host, const std::string& port, const http_client_config& config = http_client_config())
 			: http_context(client_.stream(), config)
 			, client_(service, host, port, config)
 			, config_(config)
 		{
 			http_request& req = request();
 			req.set_host(host);
-			req.set_path(path);
 		}
 
 		std::ostream& request_stream()
