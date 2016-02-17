@@ -24,7 +24,7 @@ namespace kumori
 			char* input_buffer_end = input_buffer + input_buffer_size;
 			setg(input_buffer, input_buffer_end, input_buffer_end);
 
-			char* output_buffer_end = output_buffer + output_buffer_size;
+			char* output_buffer_end = output_buffer + output_buffer_size - 1;
 			setp(output_buffer, output_buffer_end);
 		}
 
