@@ -102,8 +102,9 @@ namespace kumori
 
 	private:
 
+		friend class server_context<server>;
+
 		typedef server_context<server> context;
-		friend class context;
 
 		Derived& derived()
 		{

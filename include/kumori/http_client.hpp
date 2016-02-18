@@ -12,13 +12,15 @@
 namespace kumori
 {
 
-	class http_client : public http_context<http_client>
+	class http_client
+		: private client
+		, public http_context<http_client>
 	{
 	public:
 
 		http_client(boost::asio::io_service& service, const std::string& host, const std::string& port, const http_client_config& config = http_client_config())
-			: http_context(client_.stream(), config)
-			, client_(service, host, port, config)
+			: client(service, host, port, config)
+			, http_context(stream(), config)
 			, config_(config)
 		{
 			http_request& req = request();
@@ -82,7 +84,7 @@ namespace kumori
 			http_request& req = request();
 			std::iostream& stream = get_stream();
 
-			std::size_t content_size = get_size(request_stream_);
+			std::streamsize content_size = get_size(request_stream_);
 
 			if (req.get_method() == http_method::post)
 			{
@@ -220,7 +222,6 @@ namespace kumori
 			BOOST_THROW_EXCEPTION(http_parse_exception());
 		}
 
-		client client_;
 		http_client_config config_;
 
 		std::stringstream request_stream_;

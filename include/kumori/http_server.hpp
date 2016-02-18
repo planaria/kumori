@@ -71,6 +71,8 @@ namespace kumori
 						case http_method::post:
 							derived().on_post(context);
 							break;
+						default:
+							BOOST_THROW_EXCEPTION(http_exception(http_status_code::method_not_allowed));
 						}
 					}
 					catch(http_exception&)
@@ -113,12 +115,12 @@ namespace kumori
 			}
 		}
 
-		void on_get(http_server_context& context, bool head)
+		void on_get(http_server_context& /*context*/, bool /*head*/)
 		{
 			BOOST_THROW_EXCEPTION(http_exception(http_status_code::method_not_allowed));
 		}
 
-		void on_post(http_server_context& context)
+		void on_post(http_server_context& /*context*/)
 		{
 			BOOST_THROW_EXCEPTION(http_exception(http_status_code::method_not_allowed));
 		}

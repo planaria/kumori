@@ -44,7 +44,7 @@ namespace kumori
 			timer_.expires_from_now(timeout);
 
 			timer_.async_wait(
-				[&](const boost::system::error_code& error)
+				[&](const boost::system::error_code&)
 			{
 				resume();
 			});

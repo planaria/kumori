@@ -14,7 +14,7 @@ namespace kumori
 		{
 		}
 
-		virtual const char* what() const override
+		virtual const char* what() const throw() override
 		{
 			return "http";
 		}

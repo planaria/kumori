@@ -73,8 +73,10 @@ namespace kumori
 	}
 
 	template <class T>
-	std::string to_hex(T n, typename std::enable_if<std::is_unsigned<T>::value>::type* = 0)
+	std::string to_hex(T n, typename std::enable_if<std::is_integral<T>::value>::type* = 0)
 	{
+		BOOST_ASSERT(n >= 0);
+
 		std::string result;
 
 		bool output = false;

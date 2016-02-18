@@ -33,6 +33,11 @@ namespace kumori
 			return content_length_;
 		}
 
+		void set_content_length(std::streamsize value)
+		{
+			content_length_ = value;
+		}
+
 		void set_content_length(const boost::optional<std::streamsize>& value)
 		{
 			content_length_ = value;

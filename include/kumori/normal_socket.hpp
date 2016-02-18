@@ -29,7 +29,7 @@ namespace kumori
 			return socket_;
 		}
 
-		virtual void handshake(bool server, const boost::posix_time::time_duration& timeout) override
+		virtual void handshake(bool /*server*/, const boost::posix_time::time_duration& /*timeout*/) override
 		{
 		}
 
