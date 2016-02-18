@@ -145,14 +145,18 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\kumori\base64_util.hpp" />
     <ClInclude Include="..\include\kumori\char_table.hpp" />
     <ClInclude Include="..\include\kumori\chunked_decoder.hpp" />
     <ClInclude Include="..\include\kumori\chunked_encoder.hpp" />
     <ClInclude Include="..\include\kumori\client.hpp" />
+    <ClInclude Include="..\include\kumori\compression_util.hpp" />
     <ClInclude Include="..\include\kumori\constant_strings.hpp" />
+    <ClInclude Include="..\include\kumori\content.hpp" />
     <ClInclude Include="..\include\kumori\date_time_util.hpp" />
     <ClInclude Include="..\include\kumori\exception.hpp" />
     <ClInclude Include="..\include\kumori\client_config.hpp" />
+    <ClInclude Include="..\include\kumori\hash_util.hpp" />
     <ClInclude Include="..\include\kumori\http_client.hpp" />
     <ClInclude Include="..\include\kumori\http_client_config.hpp" />
     <ClInclude Include="..\include\kumori\http_config.hpp" />
@@ -187,6 +191,7 @@
     <ClInclude Include="..\include\kumori\socket.hpp" />
     <ClInclude Include="..\include\kumori\socket_adaptor.hpp" />
     <ClInclude Include="..\include\kumori\socket_streambuf.hpp" />
+    <ClInclude Include="..\include\kumori\static_content.hpp" />
     <ClInclude Include="..\include\kumori\stream_exception.hpp" />
     <ClInclude Include="..\include\kumori\stream_util.hpp" />
     <ClInclude Include="..\include\kumori\string_util.hpp" />
@@ -214,6 +219,7 @@
     <Import Project="..\packages\boost_filesystem-vc140.1.60.0.0\build\native\boost_filesystem-vc140.targets" Condition="Exists('..\packages\boost_filesystem-vc140.1.60.0.0\build\native\boost_filesystem-vc140.targets')" />
     <Import Project="..\packages\boost_context-vc140.1.60.0.0\build\native\boost_context-vc140.targets" Condition="Exists('..\packages\boost_context-vc140.1.60.0.0\build\native\boost_context-vc140.targets')" />
     <Import Project="..\packages\boost_iostreams-vc140.1.60.0.0\build\native\boost_iostreams-vc140.targets" Condition="Exists('..\packages\boost_iostreams-vc140.1.60.0.0\build\native\boost_iostreams-vc140.targets')" />
+    <Import Project="..\packages\boost_iostreams_zlib.1.60.0.0\build\native\boost_iostreams_zlib.targets" Condition="Exists('..\packages\boost_iostreams_zlib.1.60.0.0\build\native\boost_iostreams_zlib.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -235,5 +241,6 @@
     <Error Condition="!Exists('..\packages\boost_filesystem-vc140.1.60.0.0\build\native\boost_filesystem-vc140.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost_filesystem-vc140.1.60.0.0\build\native\boost_filesystem-vc140.targets'))" />
     <Error Condition="!Exists('..\packages\boost_context-vc140.1.60.0.0\build\native\boost_context-vc140.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost_context-vc140.1.60.0.0\build\native\boost_context-vc140.targets'))" />
     <Error Condition="!Exists('..\packages\boost_iostreams-vc140.1.60.0.0\build\native\boost_iostreams-vc140.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost_iostreams-vc140.1.60.0.0\build\native\boost_iostreams-vc140.targets'))" />
+    <Error Condition="!Exists('..\packages\boost_iostreams_zlib.1.60.0.0\build\native\boost_iostreams_zlib.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\boost_iostreams_zlib.1.60.0.0\build\native\boost_iostreams_zlib.targets'))" />
   </Target>
 </Project>

@@ -26,10 +26,18 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/utility.hpp>
 
+#include <openssl/md5.h>
+#include <openssl/hmac.h>
+#pragma comment(lib, "libeay32.lib")
+#pragma comment(lib, "ssleay32.lib")
+
 #include "server.hpp"
 #include "http_server.hpp"
 
 #include "client.hpp"
 #include "http_client.hpp"
+
+#include "null_content.hpp"
+#include "static_content.hpp"
 
 #include "io_processor.hpp"

@@ -33,6 +33,12 @@
     <ClCompile Include="main.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\boost_iostreams_zlib.gzip.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\boost_iostreams_zlib.zlib.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\kumori\kumori.hpp">
@@ -175,6 +181,21 @@
     </ClInclude>
     <ClInclude Include="..\include\kumori\limit_length_filter.hpp">
       <Filter>include\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\content.hpp">
+      <Filter>include\content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\static_content.hpp">
+      <Filter>include\content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\compression_util.hpp">
+      <Filter>include\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\hash_util.hpp">
+      <Filter>include\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\base64_util.hpp">
+      <Filter>include\util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
