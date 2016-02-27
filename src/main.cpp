@@ -9,7 +9,7 @@ class application_server : public kumori::http_server<application_server>
 {
 public:
 
-	application_server(boost::asio::io_service& service)
+	explicit application_server(boost::asio::io_service& service)
 		: http_server(service)
 	{
 	}
@@ -19,11 +19,12 @@ public:
 		context.response().set_content_type("text/plain");
 		context.write_headers();
 
+		if (head)
+			return;
+
 		auto& stream = context.response_stream();
 		stream << "Hello, World!" << std::endl;
 	}
-
-private:
 
 };
 
