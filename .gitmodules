@@ -1,0 +1,3 @@
+[submodule "ext/cb_tree"]
+	path = ext/cb_tree
+	url = https://github.com/planaria/cb_tree.git

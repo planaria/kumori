@@ -197,6 +197,18 @@
     <ClInclude Include="..\include\kumori\base64_util.hpp">
       <Filter>include\util</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\kumori\directory_content.hpp">
+      <Filter>include\content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\path_duplicated_exception.hpp">
+      <Filter>include\exception</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\regex_content.hpp">
+      <Filter>include\content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\regex_content_proxy.hpp">
+      <Filter>include\content</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

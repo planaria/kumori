@@ -8,9 +8,9 @@ namespace kumori
 	{
 	public:
 
-		virtual const char* what() const throw() override
+		http_parse_exception()
+			: exception("http_parse_exception")
 		{
-			return "http_parse";
 		}
 
 	};

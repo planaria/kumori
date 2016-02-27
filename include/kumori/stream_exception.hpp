@@ -8,9 +8,9 @@ namespace kumori
 	{
 	public:
 
-		virtual const char* what() const throw() override
+		stream_exception()
+			: exception("stream_exception")
 		{
-			return "stream";
 		}
 
 	};

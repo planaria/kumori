@@ -1,6 +1,10 @@
 # kumori
 A server library for C++
 
+## Features
+- Header-only  
+  `#include <kumori/kumori.hpp>`
+
 ## Requirements
 
 ### Supported Compilers
@@ -9,6 +13,8 @@ A server library for C++
 ### External Libraries
 - Boost C++ Libraries (>= 1.60.0)
 - OpenSSL (>= 1.0.2)
+- zlib (>= 1.2.8.7)
+- [cb_tree](https://github.com/planaria/cb_tree)
 
 ## License
 The BSD 3-Clause License (see [LICENSE](LICENSE))

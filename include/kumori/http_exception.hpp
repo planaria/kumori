@@ -10,13 +10,9 @@ namespace kumori
 	public:
 
 		explicit http_exception(http_status_code status_code)
-			: status_code_(status_code)
+			: exception("http_exception(" + boost::lexical_cast<std::string>(status_code) + ")")
+			, status_code_(status_code)
 		{
-		}
-
-		virtual const char* what() const throw() override
-		{
-			return "http";
 		}
 
 		http_status_code status_code() const

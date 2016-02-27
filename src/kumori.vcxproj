@@ -154,6 +154,7 @@
     <ClInclude Include="..\include\kumori\constant_strings.hpp" />
     <ClInclude Include="..\include\kumori\content.hpp" />
     <ClInclude Include="..\include\kumori\date_time_util.hpp" />
+    <ClInclude Include="..\include\kumori\directory_content.hpp" />
     <ClInclude Include="..\include\kumori\exception.hpp" />
     <ClInclude Include="..\include\kumori\client_config.hpp" />
     <ClInclude Include="..\include\kumori\hash_util.hpp" />
@@ -183,7 +184,10 @@
     <ClInclude Include="..\include\kumori\io_processor.hpp" />
     <ClInclude Include="..\include\kumori\kumori.hpp" />
     <ClInclude Include="..\include\kumori\normal_socket.hpp" />
+    <ClInclude Include="..\include\kumori\path_duplicated_exception.hpp" />
     <ClInclude Include="..\include\kumori\protocol.hpp" />
+    <ClInclude Include="..\include\kumori\regex_content.hpp" />
+    <ClInclude Include="..\include\kumori\regex_content_proxy.hpp" />
     <ClInclude Include="..\include\kumori\secure_socket.hpp" />
     <ClInclude Include="..\include\kumori\server.hpp" />
     <ClInclude Include="..\include\kumori\server_config.hpp" />

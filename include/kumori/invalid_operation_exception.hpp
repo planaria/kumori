@@ -8,9 +8,9 @@ namespace kumori
 	{
 	public:
 
-		virtual const char* what() const throw() override
+		invalid_operation_exception()
+			: exception("invalid_operation_exception")
 		{
-			return "invalid_operation_exception";
 		}
 
 	};

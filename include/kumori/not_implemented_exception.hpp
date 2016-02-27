@@ -8,9 +8,9 @@ namespace kumori
 	{
 	public:
 
-		virtual const char* what() const throw() override
+		not_implemented_exception()
+			: exception("not_implemented_exception")
 		{
-			return "not_implemented";
 		}
 
 	};

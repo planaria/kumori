@@ -7,6 +7,7 @@
 #include <thread>
 #include <mutex>
 #include <atomic>
+#include <regex>
 #include <utility>
 
 #define BOOST_ASIO_HAS_MOVE
@@ -24,12 +25,16 @@
 #include <boost/date_time.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/algorithm/string.hpp>
+#include <boost/optional.hpp>
 #include <boost/utility.hpp>
+#include <boost/utility/in_place_factory.hpp>
 
 #include <openssl/md5.h>
 #include <openssl/hmac.h>
 #pragma comment(lib, "libeay32.lib")
 #pragma comment(lib, "ssleay32.lib")
+
+#include <cb_tree/cb_tree.hpp>
 
 #include "server.hpp"
 #include "http_server.hpp"
@@ -39,5 +44,6 @@
 
 #include "null_content.hpp"
 #include "static_content.hpp"
+#include "directory_content.hpp"
 
 #include "io_processor.hpp"

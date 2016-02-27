@@ -61,13 +61,13 @@ namespace kumori
 		}
 
 		template <class Buffer, class Callback>
-		void async_read_some(const Buffer& buffer, Callback callback)
+		void async_read_some(const Buffer& buffer, Callback&& callback)
 		{
 			stream_.async_read_some(buffer, std::forward<Callback>(callback));
 		}
 
 		template <class Buffer, class Callback>
-		void async_write_some(const Buffer& buffer, Callback callback)
+		void async_write_some(const Buffer& buffer, Callback&& callback)
 		{
 			stream_.async_write_some(buffer, std::forward<Callback>(callback));
 		}

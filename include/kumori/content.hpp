@@ -8,6 +8,10 @@ namespace kumori
 	{
 	public:
 
+		virtual ~content()
+		{
+		}
+
 		virtual void on_get(http_server_context& context, bool head)
 		{
 			BOOST_THROW_EXCEPTION(http_exception(http_status_code::method_not_allowed));

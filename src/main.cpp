@@ -10,36 +10,20 @@ class application_server : public kumori::http_server<application_server>
 public:
 
 	application_server(boost::asio::io_service& service)
-		: service_(service)
-		, http_server(service)
-		, content_(std::string(1024, 'A'), "text/plain")
+		: http_server(service)
 	{
 	}
 
 	void on_get(kumori::http_server_context& context, bool head)
 	{
-		content_.on_get(context, head);
+		context.response().set_content_type("text/plain");
+		context.write_headers();
 
-		//context.write_headers();
-
-		//auto& stream = context.response_stream();
-		//stream << "Hello, World!" << std::endl;
-
-		//kumori::http_client client(service_, "www.yahoo.co.jp", "80");
-		//client.request().set_method(kumori::http_method::get);
-		//client.request().set_path("/");
-		//client.write_headers();
-		//client.finish_write();
-		//client.read_headers();
-		//kumori::forward(client.response_stream(), stream);
-		//client.finish_read();
+		auto& stream = context.response_stream();
+		stream << "Hello, World!" << std::endl;
 	}
 
 private:
-
-	boost::asio::io_service& service_;
-
-	kumori::static_content content_;
 
 };
 
