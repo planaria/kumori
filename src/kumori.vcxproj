@@ -154,6 +154,7 @@
     <ClInclude Include="..\include\kumori\constant_strings.hpp" />
     <ClInclude Include="..\include\kumori\content.hpp" />
     <ClInclude Include="..\include\kumori\date_time_util.hpp" />
+    <ClInclude Include="..\include\kumori\directory_config.hpp" />
     <ClInclude Include="..\include\kumori\directory_content.hpp" />
     <ClInclude Include="..\include\kumori\enum_hash.hpp" />
     <ClInclude Include="..\include\kumori\exception.hpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="..\include\kumori\http_method.hpp" />
     <ClInclude Include="..\include\kumori\http_parse_exception.hpp" />
     <ClInclude Include="..\include\kumori\limit_length_filter.hpp" />
+    <ClInclude Include="..\include\kumori\moved_content.hpp" />
     <ClInclude Include="..\include\kumori\not_implemented_exception.hpp" />
     <ClInclude Include="..\include\kumori\null_content.hpp" />
     <ClInclude Include="..\include\kumori\http_request.hpp" />
@@ -185,7 +187,7 @@
     <ClInclude Include="..\include\kumori\io_processor.hpp" />
     <ClInclude Include="..\include\kumori\kumori.hpp" />
     <ClInclude Include="..\include\kumori\normal_socket.hpp" />
-    <ClInclude Include="..\include\kumori\path_duplicated_exception.hpp" />
+    <ClInclude Include="..\include\kumori\path_exception.hpp" />
     <ClInclude Include="..\include\kumori\protocol.hpp" />
     <ClInclude Include="..\include\kumori\regex_content.hpp" />
     <ClInclude Include="..\include\kumori\regex_content_proxy.hpp" />

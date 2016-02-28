@@ -2,8 +2,10 @@
 #include "content.hpp"
 #include "regex_content.hpp"
 #include "regex_content_proxy.hpp"
+#include "moved_content.hpp"
+#include "directory_config.hpp"
 #include "http_exception.hpp"
-#include "path_duplicated_exception.hpp"
+#include "path_exception.hpp"
 
 namespace kumori
 {
@@ -38,13 +40,117 @@ namespace kumori
 
 		void add(const std::string& path, content* content)
 		{
+			if (!boost::starts_with(path, "/"))
+				BOOST_THROW_EXCEPTION(invalid_path_exception(path));
+
 			if (!content_map_.insert(std::make_pair(path, content)).second)
-				BOOST_THROW_EXCEPTION(path_duplicated_exception(path));
+				BOOST_THROW_EXCEPTION(duplicated_path_exception(path));
 		}
 
 		void add(const std::string& path, regex_content* content)
 		{
+			if (!boost::starts_with(path, "/"))
+				BOOST_THROW_EXCEPTION(invalid_path_exception(path));
+
 			regex_content_map_[path].push_back(content);
+		}
+
+		template <class Content>
+		void add(const std::string& path, const std::shared_ptr<Content>& content)
+		{
+			if (!boost::starts_with(path, "/"))
+				BOOST_THROW_EXCEPTION(invalid_path_exception(path));
+
+			managed_contents_.push_back(content);
+
+			try
+			{
+				add(path, content.get());
+			}
+			catch (...)
+			{
+				managed_contents_.erase(std::find(managed_contents_.begin(), managed_contents_.end(), content));
+				throw;
+			}
+		}
+
+		std::shared_ptr<content> load_file(const std::string& path, const boost::filesystem::path& file, const directory_config& config = directory_config())
+		{
+			if (!boost::starts_with(path, "/"))
+				BOOST_THROW_EXCEPTION(invalid_path_exception(path));
+
+			auto it = config.extension_mime_types.find(file.extension().string());
+
+			boost::filesystem::ifstream stream(file, std::ios_base::binary);
+			std::istreambuf_iterator<char> stream_begin(stream);
+			std::istreambuf_iterator<char> stream_end;
+
+			std::string content_str(stream_begin, stream_end);
+			std::string mime_type = it != config.extension_mime_types.end() ? it->second : config.unknown_mime_type;
+
+			auto conetnt = std::make_shared<static_content>(std::move(content_str), std::move(mime_type));
+			add(path, conetnt);
+
+			return conetnt;
+		}
+
+		void load_directory(const std::string& path, const boost::filesystem::path& directory, const directory_config& config = directory_config())
+		{
+			if (!boost::starts_with(path, "/"))
+				BOOST_THROW_EXCEPTION(invalid_path_exception(path));
+
+			if (!boost::ends_with(path, "/"))
+				BOOST_THROW_EXCEPTION(invalid_path_exception(path));
+
+			BOOST_ASSERT(boost::filesystem::is_directory(directory));
+
+			std::shared_ptr<content> index_content;
+			std::size_t index_highest_priority;
+
+			boost::filesystem::directory_iterator directory_begin(directory);
+			boost::filesystem::directory_iterator directory_end;
+
+			for (auto it = directory_begin; it != directory_end; ++it)
+			{
+				boost::filesystem::path filename = it->path().filename();
+
+				boost::filesystem::path nodename = filename;
+				if (config.omit_extensions.find(filename.extension().string()) != config.omit_extensions.end())
+					nodename.replace_extension();
+
+				if (boost::filesystem::is_directory(it->path()))
+				{
+					load_directory(path + nodename.string() + '/', it->path(), config);
+				}
+				else
+				{
+					auto content = load_file(path + nodename.string(), it->path(), config);
+
+					auto it = std::find(config.index_files.begin(), config.index_files.end(), filename.string());
+					if (it != config.index_files.end())
+					{
+						std::size_t priority = it - config.index_files.begin();
+						if (!index_content || priority < index_highest_priority)
+						{
+							index_content = content;
+							index_highest_priority = priority;
+						}
+					}
+				}
+			}
+
+			if (index_content)
+			{
+				add(path, index_content.get());
+
+				if (path.size() != 1)
+				{
+					std::string path_without_slash = path;
+					path_without_slash.pop_back();
+
+					add(path_without_slash, std::make_shared<moved_content>(path));
+				}
+			}
 		}
 
 	private:
@@ -90,6 +196,8 @@ namespace kumori
 
 		cb_tree::cb_map<std::string, content*> content_map_;
 		cb_tree::cb_map<std::string, std::vector<regex_content*>> regex_content_map_;
+
+		std::vector<std::shared_ptr<void>> managed_contents_;
 
 	};
 
