@@ -63,19 +63,24 @@ namespace kumori
 
 			{
 				auto range = regex_content_map_.longest_match(path);
+
 				if (range.first != range.second && range.first->first.size() <= path.size())
 				{
-					auto begin = path.begin() + range.first->first.size();
-					std::smatch match;
-
-					for (regex_content* content : range.first->second)
+					if (std::equal(range.first->first.begin(), range.first->first.end(), path.begin()))
 					{
-						if (!std::regex_match(begin, path.end(), match, content->pattern()))
-							continue;
+						auto begin = path.begin() + range.first->first.size();
 
-						regex_content_proxy proxy(*content, match);
-						callback(&proxy);
-						return;
+						std::smatch match;
+
+						for (regex_content* content : range.first->second)
+						{
+							if (!std::regex_match(begin, path.end(), match, content->pattern()))
+								continue;
+
+							regex_content_proxy proxy(*content, match);
+							callback(&proxy);
+							return;
+						}
 					}
 				}
 			}
