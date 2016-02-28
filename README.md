@@ -8,6 +8,7 @@ A server library for C++
 ## Requirements
 
 ### Supported Compilers
+- Clang (>= 3.7.0)
 - Visual Studio 2015
 
 ### External Libraries
