@@ -155,6 +155,7 @@
     <ClInclude Include="..\include\kumori\content.hpp" />
     <ClInclude Include="..\include\kumori\date_time_util.hpp" />
     <ClInclude Include="..\include\kumori\directory_content.hpp" />
+    <ClInclude Include="..\include\kumori\enum_hash.hpp" />
     <ClInclude Include="..\include\kumori\exception.hpp" />
     <ClInclude Include="..\include\kumori\client_config.hpp" />
     <ClInclude Include="..\include\kumori\hash_util.hpp" />

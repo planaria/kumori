@@ -209,6 +209,9 @@
     <ClInclude Include="..\include\kumori\regex_content_proxy.hpp">
       <Filter>include\content</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\kumori\enum_hash.hpp">
+      <Filter>include\util</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
