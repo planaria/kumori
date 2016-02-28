@@ -10,10 +10,14 @@ namespace kumori
 	template <class Derived>
 	class http_server : public server<http_server<Derived>>
 	{
+	private:
+
+		typedef server<http_server<Derived>> base_type;
+
 	public:
 
 		explicit http_server(boost::asio::io_service& service, const http_server_config& config = http_server_config())
-			: server(service, config)
+			: base_type(service, config)
 			, config_(config)
 		{
 		}

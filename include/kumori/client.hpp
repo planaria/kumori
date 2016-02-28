@@ -85,7 +85,7 @@ namespace kumori
 
 			socket->handshake(false, config.socket_timeout);
 
-			return std::move(socket);
+			return socket;
 		}
 
 		std::unique_ptr<socket> socket_;

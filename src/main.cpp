@@ -51,7 +51,7 @@ int main(int /*argc*/, char* /*argv*/[])
 		signals.add(SIGQUIT);
 #endif
 
-		signals.async_wait([&](const boost::system::error_code& error, int signal_number)
+		signals.async_wait([&](const boost::system::error_code& error, int /*signal_number*/)
 		{
 			if (error == boost::asio::error::operation_aborted)
 				return;

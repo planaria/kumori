@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstddef>
 #include <unordered_map>
 #include <bitset>
 #include <functional>
@@ -11,7 +12,10 @@
 #include <utility>
 
 #define BOOST_ASIO_HAS_MOVE
+
+#ifdef _MSC_VER
 #define BOOST_USE_WINFIBERS
+#endif
 
 #include <boost/filesystem.hpp>
 #include <boost/signals2/signal.hpp>
@@ -31,8 +35,11 @@
 
 #include <openssl/md5.h>
 #include <openssl/hmac.h>
+
+#ifdef _MSC_VER
 #pragma comment(lib, "libeay32.lib")
 #pragma comment(lib, "ssleay32.lib")
+#endif
 
 #include <cb_tree/cb_tree.hpp>
 

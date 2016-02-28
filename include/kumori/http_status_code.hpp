@@ -1,4 +1,5 @@
 #pragma once
+#include "enum_hash.hpp"
 
 namespace kumori
 {
@@ -185,5 +186,16 @@ namespace kumori
 
 		return stream;
 	}
+
+}
+
+namespace std
+{
+
+	template <>
+	struct hash<kumori::http_status_code>
+		: kumori::enum_hash
+	{
+	};
 
 }
