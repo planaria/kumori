@@ -13,7 +13,11 @@ namespace kumori
 	{
 	public:
 
-		explicit client(boost::asio::io_service& service, const std::string& host, const std::string& port, const client_config& config = client_config())
+		explicit client(
+			boost::asio::io_service& service,
+			const std::string& host,
+			const std::string& port,
+			const client_config& config = client_config())
 			: socket_(connect(service, host, port, config))
 			, input_buffer_(config.socket_buffer_size)
 			, output_buffer_(config.socket_buffer_size)

@@ -28,6 +28,9 @@
     <Filter Include="include\content">
       <UniqueIdentifier>{490887fb-e75f-400b-a635-aa3185828b7e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\server\redis">
+      <UniqueIdentifier>{a9d0a3ad-c840-41c0-aebd-fba7225a6b93}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -217,6 +220,21 @@
     </ClInclude>
     <ClInclude Include="..\include\kumori\moved_content.hpp">
       <Filter>include\content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\redis_client.hpp">
+      <Filter>include\server\redis</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\redis_client_config.hpp">
+      <Filter>include\server\redis</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\redis_exception.hpp">
+      <Filter>include\exception</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\resp.hpp">
+      <Filter>include\server\redis</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\redis_client_type.hpp">
+      <Filter>include\server\redis</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -189,6 +189,11 @@
     <ClInclude Include="..\include\kumori\normal_socket.hpp" />
     <ClInclude Include="..\include\kumori\path_exception.hpp" />
     <ClInclude Include="..\include\kumori\protocol.hpp" />
+    <ClInclude Include="..\include\kumori\redis_client.hpp" />
+    <ClInclude Include="..\include\kumori\redis_client_config.hpp" />
+    <ClInclude Include="..\include\kumori\redis_client_type.hpp" />
+    <ClInclude Include="..\include\kumori\redis_exception.hpp" />
+    <ClInclude Include="..\include\kumori\resp.hpp" />
     <ClInclude Include="..\include\kumori\regex_content.hpp" />
     <ClInclude Include="..\include\kumori\regex_content_proxy.hpp" />
     <ClInclude Include="..\include\kumori\secure_socket.hpp" />

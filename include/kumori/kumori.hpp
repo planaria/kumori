@@ -31,8 +31,10 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/algorithm/string.hpp>
 #include <boost/optional.hpp>
+#include <boost/variant.hpp>
 #include <boost/utility.hpp>
 #include <boost/utility/in_place_factory.hpp>
+#include <boost/cast.hpp>
 
 #include <openssl/md5.h>
 #include <openssl/hmac.h>
@@ -49,6 +51,7 @@
 
 #include "client.hpp"
 #include "http_client.hpp"
+#include "redis_client.hpp"
 
 #include "null_content.hpp"
 #include "static_content.hpp"
