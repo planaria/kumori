@@ -339,7 +339,7 @@ namespace kumori
 		template <class Key, class Field>
 		double hincrbyfloat(const Key& key, const Field& field, double increment)
 		{
-			return boost::lexica_cast<double>(as_string(command("HINCRBYFLOAT", key, field, increment)));
+			return boost::lexical_cast<double>(as_string(command("HINCRBYFLOAT", key, field, increment)));
 		}
 
 		template <class Key>
@@ -408,13 +408,13 @@ namespace kumori
 		template <class Key>
 		std::int64_t bitcount(const Key& key)
 		{
-			return as_integer(command("BITCOUNT"));
+			return as_integer(command("BITCOUNT", key));
 		}
 
 		template <class Key>
 		std::int64_t bitcount(const Key& key, std::int64_t start, std::int64_t end)
 		{
-			return as_integer(command("BITCOUNT", start, end));
+			return as_integer(command("BITCOUNT", key, start, end));
 		}
 
 		template <class DestKey, class SrcKey, class... SrcKeys>
@@ -444,19 +444,19 @@ namespace kumori
 		template <class Key>
 		std::int64_t bitpos(const Key& key, bool bit)
 		{
-			return as_integer(command("BITPOS", bit ? "1" : "0"));
+			return as_integer(command("BITPOS", key, bit ? "1" : "0"));
 		}
 
 		template <class Key>
 		std::int64_t bitpos(const Key& key, bool bit, std::int64_t start)
 		{
-			return as_integer(command("BITPOS", bit ? "1" : "0", start));
+			return as_integer(command("BITPOS", key, bit ? "1" : "0", start));
 		}
 
 		template <class Key>
 		std::int64_t bitpos(const Key& key, bool bit, std::int64_t start, std::int64_t end)
 		{
-			return as_integer(command("BITPOS", bit ? "1" : "0", start, end));
+			return as_integer(command("BITPOS", key, bit ? "1" : "0", start, end));
 		}
 
 		template <class Key>
