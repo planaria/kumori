@@ -2,7 +2,7 @@
 A server library for C++
 
 ## Features
-- Header-only  
+- Header-only (except external libraries)  
   `#include <kumori/kumori.hpp>`
 
 ## Requirements
