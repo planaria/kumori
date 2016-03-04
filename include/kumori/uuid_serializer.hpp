@@ -12,7 +12,7 @@ namespace kumori
 	};
 
 	template <class Archive>
-	void serialize(Archive& archive, boost::uuids::uuid& value, std::uint32_t version)
+	void serialize(Archive& archive, boost::uuids::uuid& value, std::uint32_t /*version*/)
 	{
 		for (auto& v : value)
 			archive(v);

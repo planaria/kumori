@@ -19,7 +19,7 @@ namespace kumori
 	}
 
 	template <class Archive, class T>
-	void save(Archive& archive, const boost::optional<T>& value, std::uint32_t version)
+	void save(Archive& archive, const boost::optional<T>& value, std::uint32_t /*version*/)
 	{
 		bool has_value = !!value;
 		archive(has_value);
@@ -29,7 +29,7 @@ namespace kumori
 	}
 
 	template <class Archive, class T>
-	void load(Archive& archive, boost::optional<T>& value, std::uint32_t version)
+	void load(Archive& archive, boost::optional<T>& value, std::uint32_t /*version*/)
 	{
 		bool has_value;
 		archive(has_value);

@@ -74,7 +74,7 @@ namespace kumori
 			std::string response_str = send(parameters);
 
 			picojson::value value;
-			CHECK_PICOJSON(parse(value, response_str.begin(), response_str.end()));
+			CHECK_PICOJSON(picojson::parse(value, response_str));
 			if(!value.is<picojson::object>())
 				BOOST_THROW_EXCEPTION(oauth_exception());
 			const picojson::object& tree = value.get<picojson::object>();

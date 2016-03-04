@@ -19,7 +19,7 @@ namespace kumori
 	};
 
 	template <class Archive>
-	void serialize(Archive& archive, session& value, std::uint32_t version)
+	void serialize(Archive& archive, session& value, std::uint32_t /*version*/)
 	{
 		archive(value.timestamp);
 		archive(value.csrf_token);

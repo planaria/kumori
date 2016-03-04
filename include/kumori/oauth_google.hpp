@@ -49,31 +49,31 @@ namespace kumori
 				http_status_code status_code = client.response().get_status_code();
 				if (status_code != http_status_code::ok)
 					BOOST_THROW_EXCEPTION(oauth_exception());
-
-				picojson::value value;
-				CHECK_PICOJSON(parse(value, response_str.begin(), response_str.end()));
-				if (!value.is<picojson::object>())
-					BOOST_THROW_EXCEPTION(oauth_exception());
-				const picojson::object& tree = value.get<picojson::object>();
-
-				std::string id = get_or_empty(tree, "id");
-				if(id.empty())
-					BOOST_THROW_EXCEPTION(oauth_exception());
-
-				user_info info;
-				info.name = get_or_empty(tree, "displayName");
-				if(info.name.empty())
-					BOOST_THROW_EXCEPTION(oauth_exception());
-
-				auto image_it = tree.find("image");
-				if (image_it != tree.end())
-				{
-					const picojson::object& image_tree = image_it->second.get<picojson::object>();
-					info.icon = get_or_empty(image_tree, "url");
-				}
-
-				return std::make_pair(std::move(id), std::move(info));
 			}
+
+			picojson::value value;
+			CHECK_PICOJSON(parse(value, response_str));
+			if (!value.is<picojson::object>())
+				BOOST_THROW_EXCEPTION(oauth_exception());
+			const picojson::object& tree = value.get<picojson::object>();
+
+			std::string id = get_or_empty(tree, "id");
+			if(id.empty())
+				BOOST_THROW_EXCEPTION(oauth_exception());
+
+			user_info info;
+			info.name = get_or_empty(tree, "displayName");
+			if(info.name.empty())
+				BOOST_THROW_EXCEPTION(oauth_exception());
+
+			auto image_it = tree.find("image");
+			if (image_it != tree.end())
+			{
+				const picojson::object& image_tree = image_it->second.get<picojson::object>();
+				info.icon = get_or_empty(image_tree, "url");
+			}
+
+			return std::make_pair(std::move(id), std::move(info));
 		}
 
 	private:

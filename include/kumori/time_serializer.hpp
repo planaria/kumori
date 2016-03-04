@@ -20,13 +20,13 @@ namespace kumori
 	}
 
 	template <class Archive>
-	void save(Archive& archive, const boost::posix_time::time_duration& value, std::uint32_t version)
+	void save(Archive& archive, const boost::posix_time::time_duration& value, std::uint32_t /*version*/)
 	{
 		archive(value.total_milliseconds());
 	}
 
 	template <class Archive>
-	void load(Archive& archive, boost::posix_time::time_duration& value, std::uint32_t version)
+	void load(Archive& archive, boost::posix_time::time_duration& value, std::uint32_t /*version*/)
 	{
 		boost::posix_time::time_duration::tick_type ms;
 		archive(ms);
@@ -47,13 +47,13 @@ namespace kumori
 	}
 
 	template <class Archive>
-	void save(Archive& archive, const boost::posix_time::ptime& value, std::uint32_t version)
+	void save(Archive& archive, const boost::posix_time::ptime& value, std::uint32_t /*version*/)
 	{
 		archive(value - epoch());
 	}
 
 	template <class Archive>
-	void load(Archive& archive, boost::posix_time::ptime& value, std::uint32_t version)
+	void load(Archive& archive, boost::posix_time::ptime& value, std::uint32_t /*version*/)
 	{
 		boost::posix_time::time_duration d;
 		archive(d);

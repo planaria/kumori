@@ -57,7 +57,7 @@ namespace kumori
 		}
 
 		template <class Value>
-		void set_impl(output_key_archive& oka, output_value_archive& ova, const Value& value)
+		void set_impl(output_key_archive& /*oka*/, output_value_archive& ova, const Value& value)
 		{
 			ova(value);
 		}

@@ -30,12 +30,12 @@ namespace kumori
 			parameters["include_entities"] = "false";
 			parameters["skip_status"] = "true";
 
-			std::string response_string = this->signed_request(
+			std::string response_str = this->signed_request(
 				http_method::get, verify_credentials_url_, parameters,
 				access_token, access_token_secret);
 
 			picojson::value value;
-			CHECK_PICOJSON(parse(value, response_string.begin(), response_string.end()));
+			CHECK_PICOJSON(picojson::parse(value, response_str));
 			if (!value.is<picojson::object>())
 				BOOST_THROW_EXCEPTION(oauth_exception());
 			const picojson::object& tree = value.get<picojson::object>();

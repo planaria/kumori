@@ -21,7 +21,7 @@ namespace kumori
 		});
 
 		std::string result;
-		result.reserve(std::size(range));
+		result.reserve(std::end(range) - std::begin(range));
 
 		for (char c : range)
 		{
