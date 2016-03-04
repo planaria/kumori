@@ -32,7 +32,7 @@ namespace kumori
 		std::ostreambuf_iterator<char> output_it(output_stream);
 
 		while (size-- > 0)
-			*output_it++ = *input_it;
+			*output_it++ = *input_it++;
 	}
 
 	inline void ignore_until_end(std::istream& stream)

@@ -10,6 +10,7 @@
 #include <mutex>
 #include <atomic>
 #include <regex>
+#include <random>
 #include <utility>
 
 #define BOOST_ASIO_HAS_MOVE
@@ -32,6 +33,9 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/optional.hpp>
 #include <boost/variant.hpp>
+#include <boost/uuid/uuid.hpp>
+#include <boost/uuid/uuid_io.hpp>
+#include <boost/uuid/uuid_generators.hpp>
 #include <boost/utility.hpp>
 #include <boost/utility/in_place_factory.hpp>
 #include <boost/cast.hpp>
@@ -44,6 +48,8 @@
 #pragma comment(lib, "ssleay32.lib")
 #endif
 
+#include <picojson.h>
+
 #include <cb_tree/cb_tree.hpp>
 
 #include "server.hpp"
@@ -55,6 +61,15 @@
 
 #include "null_content.hpp"
 #include "static_content.hpp"
+#include "regex_content.hpp"
+#include "moved_content.hpp"
+#include "oauth_content.hpp"
+#include "oauth_callback_content.hpp"
 #include "directory_content.hpp"
+
+#include "redis_database.hpp"
+
+#include "oauth_twitter.hpp"
+#include "oauth_google.hpp"
 
 #include "io_processor.hpp"

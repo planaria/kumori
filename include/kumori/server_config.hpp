@@ -7,10 +7,10 @@ namespace kumori
 	{
 
 		bool enable_plain = true;
-		int plain_port = 80;
+		unsigned short plain_port = 80;
 
 		bool enable_ssl = false;
-		int ssl_port = 443;
+		unsigned short ssl_port = 443;
 		boost::asio::ssl::context* ssl_context = nullptr;
 
 		std::size_t num_maximum_connections = 10000;

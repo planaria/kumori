@@ -16,7 +16,7 @@ else
 endif
 
 LIBS = 
-INCLUDE = -I./include -I./ext/cb_tree/include
+INCLUDE = -I./include -I./ext/cb_tree/include -I./ext/picojson
 
 TARGETDIR = ./bin/$(buildtype)
 TARGET = $(TARGETDIR)/kumori

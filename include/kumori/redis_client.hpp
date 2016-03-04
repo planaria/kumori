@@ -16,7 +16,7 @@ namespace kumori
 		redis_client(
 			boost::asio::io_service& service,
 			const std::string& host,
-			const std::string& port,
+			unsigned short port,
 			const redis_client_config& config = redis_client_config())
 			: client(service, host, port, config)
 		{
@@ -86,9 +86,9 @@ namespace kumori
 		}
 
 		template <class Key>
-		bool expireat(const Key& key, std::int64_t time_stamp)
+		bool expireat(const Key& key, std::int64_t timestamp)
 		{
-			return as_integer(command("EXPIREAT", key, time_stamp)) != 0;
+			return as_integer(command("EXPIREAT", key, timestamp)) != 0;
 		}
 
 		template <class Pattern>
@@ -202,16 +202,16 @@ namespace kumori
 
 		// Lists
 
-		template <class Key, class... Keys>
-		std::vector<resp> blpop(const Key& key, const Keys&... keys, std::int64_t timeout)
+		template <class Key, class... Args>
+		std::vector<resp> blpop(const Key& key, const Args&... args)
 		{
-			return as_array(command("BLPOP", key, keys..., timeout));
+			return as_array(command("BLPOP", key, args...));
 		}
 
-		template <class Key, class... Keys>
-		std::vector<resp> brpop(const Key& key, const Keys&... keys, std::int64_t timeout)
+		template <class Key, class... Args>
+		std::vector<resp> brpop(const Key& key, const Args&... args)
 		{
-			return as_array(command("BRPOP", key, keys..., timeout));
+			return as_array(command("BRPOP", key, args...));
 		}
 
 		template <class Source, class Destination>

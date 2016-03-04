@@ -31,6 +31,21 @@
     <Filter Include="include\server\redis">
       <UniqueIdentifier>{a9d0a3ad-c840-41c0-aebd-fba7225a6b93}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\oauth">
+      <UniqueIdentifier>{8b7492ae-e558-44af-a820-e2685d58aee7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\session-manager">
+      <UniqueIdentifier>{3f242a43-2252-4eac-acab-2ec50b533421}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\database">
+      <UniqueIdentifier>{145af1cb-b0e1-4ea1-8056-9da4965550d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\serialization">
+      <UniqueIdentifier>{db3f6d87-a5d5-4d70-81a9-853673e06a62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\serialization\archive">
+      <UniqueIdentifier>{80d1e3b8-0ee6-472d-b2db-09ed352b7563}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -146,9 +161,6 @@
     <ClInclude Include="..\include\kumori\protocol.hpp">
       <Filter>include\util</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\kumori\uri_util.hpp">
-      <Filter>include\util</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\kumori\char_table.hpp">
       <Filter>include\util</Filter>
     </ClInclude>
@@ -235,6 +247,123 @@
     </ClInclude>
     <ClInclude Include="..\include\kumori\redis_client_type.hpp">
       <Filter>include\server\redis</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\oauth.hpp">
+      <Filter>include\oauth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\oauth_10.hpp">
+      <Filter>include\oauth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\oauth_content.hpp">
+      <Filter>include\content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\oauth_config.hpp">
+      <Filter>include\oauth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\url_exception.hpp">
+      <Filter>include\exception</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\url.hpp">
+      <Filter>include\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\url_util.hpp">
+      <Filter>include\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\oauth_10_config.hpp">
+      <Filter>include\oauth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\oauth_20_config.hpp">
+      <Filter>include\oauth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\oauth_google_config.hpp">
+      <Filter>include\oauth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\oauth_twitter_config.hpp">
+      <Filter>include\oauth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\secure_random.hpp">
+      <Filter>include\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\session_manager.hpp">
+      <Filter>include\session-manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\oauth_twitter.hpp">
+      <Filter>include\oauth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\user_info.hpp">
+      <Filter>include\session-manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\picojson_exception.hpp">
+      <Filter>include\exception</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\oauth_callback_content.hpp">
+      <Filter>include\content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\oauth_exception.hpp">
+      <Filter>include\exception</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\database.hpp">
+      <Filter>include\database</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\redis_database.hpp">
+      <Filter>include\database</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\redis_database_config.hpp">
+      <Filter>include\database</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\database_connection.hpp">
+      <Filter>include\database</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\redis_database_connection.hpp">
+      <Filter>include\database</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\archive_mode.hpp">
+      <Filter>include\serialization\archive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\output_archive.hpp">
+      <Filter>include\serialization\archive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\serialization_traits.hpp">
+      <Filter>include\serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\string_code.hpp">
+      <Filter>include\serialization\archive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\input_archive.hpp">
+      <Filter>include\serialization\archive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\archive_exception.hpp">
+      <Filter>include\exception</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\serialization.hpp">
+      <Filter>include\serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\serialize_split.hpp">
+      <Filter>include\serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\session.hpp">
+      <Filter>include\session-manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\csrf_exception.hpp">
+      <Filter>include\exception</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\uuid_serializer.hpp">
+      <Filter>include\serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\time_serializer.hpp">
+      <Filter>include\serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\optional_serializer.hpp">
+      <Filter>include\serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\picojson_util.hpp">
+      <Filter>include\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\oauth_20.hpp">
+      <Filter>include\oauth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\oauth_google.hpp">
+      <Filter>include\oauth</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

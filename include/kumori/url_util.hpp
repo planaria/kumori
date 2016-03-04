@@ -6,7 +6,7 @@ namespace kumori
 {
 
 	template <class Range>
-	std::string encode_uri(const Range& range)
+	std::string encode_url(const Range& range)
 	{
 		static char_table is_valid([](char c)
 		{
@@ -21,7 +21,7 @@ namespace kumori
 		});
 
 		std::string result;
-		result.reserve(boost::size(range));
+		result.reserve(std::size(range));
 
 		for (char c : range)
 		{
@@ -41,13 +41,13 @@ namespace kumori
 	}
 
 	template <class Iterator>
-	std::string encode_uri(Iterator begin, Iterator end)
+	std::string encode_url(Iterator begin, Iterator end)
 	{
-		return encode_uri(boost::make_iterator_range(begin, end));
+		return encode_url(boost::make_iterator_range(begin, end));
 	}
 
 	template <class Range>
-	bool decode_uri(const Range& range, std::string& result)
+	bool decode_url(const Range& range, std::string& result)
 	{
 		struct hex2code
 		{
@@ -94,9 +94,9 @@ namespace kumori
 	}
 
 	template <class Iterator>
-	bool decode_uri(Iterator begin, Iterator end, std::string& result)
+	bool decode_url(Iterator begin, Iterator end, std::string& result)
 	{
-		return decode_uri(boost::make_iterator_range(begin, end), result);
+		return decode_url(boost::make_iterator_range(begin, end), result);
 	}
 
 	inline bool is_valid_path(const std::string& path)

@@ -1,3 +1,6 @@
 [submodule "ext/cb_tree"]
 	path = ext/cb_tree
 	url = https://github.com/planaria/cb_tree.git
+[submodule "ext/picojson"]
+	path = ext/picojson
+	url = https://github.com/kazuho/picojson.git

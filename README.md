@@ -15,6 +15,7 @@ A server library for C++
 - Boost C++ Libraries (>= 1.60.0)
 - OpenSSL (>= 1.0.2)
 - zlib (>= 1.2.8.7)
+- [picojson](https://github.com/kazuho/picojson)
 - [cb_tree](https://github.com/planaria/cb_tree)
 
 ## License

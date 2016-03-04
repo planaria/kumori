@@ -6,6 +6,7 @@
 #include "limit_length_filter.hpp"
 #include "string_util.hpp"
 #include "stream_util.hpp"
+#include "url.hpp"
 #include "constant_strings.hpp"
 #include "http_parse_exception.hpp"
 
@@ -18,13 +19,22 @@ namespace kumori
 	{
 	public:
 
-		http_client(boost::asio::io_service& service, const std::string& host, const std::string& port, const http_client_config& config = http_client_config())
+		http_client(boost::asio::io_service& service, const std::string& host, unsigned short port, const http_client_config& config = http_client_config())
 			: client(service, host, port, config)
 			, http_context(stream(), config)
 			, config_(config)
 		{
 			http_request& req = request();
 			req.set_host(host);
+		}
+
+		http_client(boost::asio::io_service& service, const url& url, const http_client_config& config = http_client_config())
+			: http_client(service, url.get_host(), url.get_port(), config)
+		{
+			BOOST_ASSERT((url.get_protocol() == protocol::https) == !!config.ssl_context);
+
+			http_request& req = request();
+			req.set_path(url.get_path());
 		}
 
 		std::ostream& request_stream()

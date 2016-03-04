@@ -29,7 +29,7 @@ namespace kumori
 
 	inline std::ostream& operator <<(std::ostream& stream, protocol p)
 	{
-		switch (protocol)
+		switch (p)
 		{
 		case protocol::http:
 			stream << "http";

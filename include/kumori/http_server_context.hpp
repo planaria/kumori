@@ -3,7 +3,7 @@
 #include "chunked_encoder.hpp"
 #include "http_connection_token.hpp"
 #include "stream_util.hpp"
-#include "uri_util.hpp"
+#include "url_util.hpp"
 #include "constant_strings.hpp"
 #include "http_exception.hpp"
 
@@ -134,7 +134,7 @@ namespace kumori
 			auto pathEnd = std::find(original_path.begin(), original_path.end(), '?');
 
 			std::string path;
-			if (!decode_uri(original_path.begin(), pathEnd, path))
+			if (!decode_url(original_path.begin(), pathEnd, path))
 				BOOST_THROW_EXCEPTION(http_exception(http_status_code::bad_request));
 			req.set_path(std::move(path));
 
@@ -155,11 +155,11 @@ namespace kumori
 					if (keyEnd != param.end())
 					{
 						std::string key;
-						if (!decode_uri(param.begin(), keyEnd, key))
+						if (!decode_url(param.begin(), keyEnd, key))
 							BOOST_THROW_EXCEPTION(http_exception(http_status_code::bad_request));
 
 						std::string value;
-						if (!decode_uri(boost::next(keyEnd), param.end(), value))
+						if (!decode_url(boost::next(keyEnd), param.end(), value))
 							BOOST_THROW_EXCEPTION(http_exception(http_status_code::bad_request));
 
 						parameters[key] = std::move(value);

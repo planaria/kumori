@@ -145,6 +145,18 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\kumori\archive_exception.hpp" />
+    <ClInclude Include="..\include\kumori\archive_mode.hpp" />
+    <ClInclude Include="..\include\kumori\csrf_exception.hpp" />
+    <ClInclude Include="..\include\kumori\input_archive.hpp" />
+    <ClInclude Include="..\include\kumori\oauth_20.hpp" />
+    <ClInclude Include="..\include\kumori\oauth_google.hpp" />
+    <ClInclude Include="..\include\kumori\optional_serializer.hpp" />
+    <ClInclude Include="..\include\kumori\picojson_util.hpp" />
+    <ClInclude Include="..\include\kumori\serialization.hpp" />
+    <ClInclude Include="..\include\kumori\serialize_split.hpp" />
+    <ClInclude Include="..\include\kumori\session.hpp" />
+    <ClInclude Include="..\include\kumori\string_code.hpp" />
     <ClInclude Include="..\include\kumori\base64_util.hpp" />
     <ClInclude Include="..\include\kumori\char_table.hpp" />
     <ClInclude Include="..\include\kumori\chunked_decoder.hpp" />
@@ -153,6 +165,8 @@
     <ClInclude Include="..\include\kumori\compression_util.hpp" />
     <ClInclude Include="..\include\kumori\constant_strings.hpp" />
     <ClInclude Include="..\include\kumori\content.hpp" />
+    <ClInclude Include="..\include\kumori\database.hpp" />
+    <ClInclude Include="..\include\kumori\database_connection.hpp" />
     <ClInclude Include="..\include\kumori\date_time_util.hpp" />
     <ClInclude Include="..\include\kumori\directory_config.hpp" />
     <ClInclude Include="..\include\kumori\directory_content.hpp" />
@@ -187,19 +201,38 @@
     <ClInclude Include="..\include\kumori\io_processor.hpp" />
     <ClInclude Include="..\include\kumori\kumori.hpp" />
     <ClInclude Include="..\include\kumori\normal_socket.hpp" />
+    <ClInclude Include="..\include\kumori\output_archive.hpp" />
+    <ClInclude Include="..\include\kumori\oauth.hpp" />
+    <ClInclude Include="..\include\kumori\oauth_10.hpp" />
+    <ClInclude Include="..\include\kumori\oauth_10_config.hpp" />
+    <ClInclude Include="..\include\kumori\oauth_20_config.hpp" />
+    <ClInclude Include="..\include\kumori\oauth_callback_content.hpp" />
+    <ClInclude Include="..\include\kumori\oauth_config.hpp" />
+    <ClInclude Include="..\include\kumori\oauth_content.hpp" />
+    <ClInclude Include="..\include\kumori\oauth_exception.hpp" />
+    <ClInclude Include="..\include\kumori\oauth_google_config.hpp" />
+    <ClInclude Include="..\include\kumori\oauth_twitter.hpp" />
+    <ClInclude Include="..\include\kumori\oauth_twitter_config.hpp" />
     <ClInclude Include="..\include\kumori\path_exception.hpp" />
+    <ClInclude Include="..\include\kumori\picojson_exception.hpp" />
     <ClInclude Include="..\include\kumori\protocol.hpp" />
     <ClInclude Include="..\include\kumori\redis_client.hpp" />
     <ClInclude Include="..\include\kumori\redis_client_config.hpp" />
     <ClInclude Include="..\include\kumori\redis_client_type.hpp" />
+    <ClInclude Include="..\include\kumori\redis_database.hpp" />
+    <ClInclude Include="..\include\kumori\redis_database_config.hpp" />
+    <ClInclude Include="..\include\kumori\redis_database_connection.hpp" />
     <ClInclude Include="..\include\kumori\redis_exception.hpp" />
     <ClInclude Include="..\include\kumori\resp.hpp" />
     <ClInclude Include="..\include\kumori\regex_content.hpp" />
     <ClInclude Include="..\include\kumori\regex_content_proxy.hpp" />
+    <ClInclude Include="..\include\kumori\secure_random.hpp" />
     <ClInclude Include="..\include\kumori\secure_socket.hpp" />
+    <ClInclude Include="..\include\kumori\serialization_traits.hpp" />
     <ClInclude Include="..\include\kumori\server.hpp" />
     <ClInclude Include="..\include\kumori\server_config.hpp" />
     <ClInclude Include="..\include\kumori\server_context.hpp" />
+    <ClInclude Include="..\include\kumori\session_manager.hpp" />
     <ClInclude Include="..\include\kumori\socket.hpp" />
     <ClInclude Include="..\include\kumori\socket_adaptor.hpp" />
     <ClInclude Include="..\include\kumori\socket_streambuf.hpp" />
@@ -208,7 +241,12 @@
     <ClInclude Include="..\include\kumori\stream_util.hpp" />
     <ClInclude Include="..\include\kumori\string_util.hpp" />
     <ClInclude Include="..\include\kumori\sync.hpp" />
-    <ClInclude Include="..\include\kumori\uri_util.hpp" />
+    <ClInclude Include="..\include\kumori\time_serializer.hpp" />
+    <ClInclude Include="..\include\kumori\url.hpp" />
+    <ClInclude Include="..\include\kumori\url_exception.hpp" />
+    <ClInclude Include="..\include\kumori\url_util.hpp" />
+    <ClInclude Include="..\include\kumori\user_info.hpp" />
+    <ClInclude Include="..\include\kumori\uuid_serializer.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

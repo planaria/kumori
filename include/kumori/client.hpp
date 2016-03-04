@@ -16,7 +16,7 @@ namespace kumori
 		explicit client(
 			boost::asio::io_service& service,
 			const std::string& host,
-			const std::string& port,
+			unsigned short port,
 			const client_config& config = client_config())
 			: socket_(connect(service, host, port, config))
 			, input_buffer_(config.socket_buffer_size)
@@ -33,19 +33,19 @@ namespace kumori
 
 	private:
 
-		std::unique_ptr<socket> connect(boost::asio::io_service& service, const std::string& host, const std::string& port, const client_config& config)
+		std::unique_ptr<socket> connect(boost::asio::io_service& service, const std::string& host, unsigned short port, const client_config& config)
 		{
 			sync& sync = sync::current();
 
 			std::unique_ptr<socket> socket;
 
-			if (config.enable_ssl)
+			if (config.ssl_context)
 				socket = std::make_unique<secure_socket>(service, *config.ssl_context);
 			else
 				socket = std::make_unique<normal_socket>(service);
 
 			boost::asio::ip::tcp::resolver resolver(service);
-			boost::asio::ip::tcp::resolver::query query(host, port);
+			boost::asio::ip::tcp::resolver::query query(host, boost::lexical_cast<std::string>(port));
 
 			boost::system::error_code error;
 			boost::asio::ip::tcp::resolver::iterator it;
