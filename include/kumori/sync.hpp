@@ -39,7 +39,7 @@ namespace kumori
 		}
 
 		template <class Callback>
-		void suspend_for(const boost::posix_time::time_duration& timeout, Callback&& cancel)
+		void suspend_for(const boost::posix_time::time_duration& timeout, Callback& cancel)
 		{
 			timer_.expires_from_now(timeout);
 

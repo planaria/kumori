@@ -12,11 +12,10 @@ namespace kumori
 		{
 		}
 
-		virtual void begin() = 0;
-		virtual void commit() = 0;
-		virtual void rollback() = 0;
+		virtual void ping() = 0;
 
 		virtual boost::optional<std::string> get(const std::string& key) = 0;
+
 		virtual void set(const std::string& key, const std::string& value) = 0;
 
 		template <class Value, class Key, class... Keys>

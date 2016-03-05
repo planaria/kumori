@@ -147,6 +147,8 @@
   <ItemGroup>
     <ClInclude Include="..\include\kumori\archive_exception.hpp" />
     <ClInclude Include="..\include\kumori\archive_mode.hpp" />
+    <ClInclude Include="..\include\kumori\async_mutex.hpp" />
+    <ClInclude Include="..\include\kumori\async_mutex_service.hpp" />
     <ClInclude Include="..\include\kumori\csrf_exception.hpp" />
     <ClInclude Include="..\include\kumori\input_archive.hpp" />
     <ClInclude Include="..\include\kumori\oauth_20.hpp" />
@@ -241,6 +243,7 @@
     <ClInclude Include="..\include\kumori\stream_util.hpp" />
     <ClInclude Include="..\include\kumori\string_util.hpp" />
     <ClInclude Include="..\include\kumori\sync.hpp" />
+    <ClInclude Include="..\include\kumori\sync_lock.hpp" />
     <ClInclude Include="..\include\kumori\time_serializer.hpp" />
     <ClInclude Include="..\include\kumori\url.hpp" />
     <ClInclude Include="..\include\kumori\url_exception.hpp" />

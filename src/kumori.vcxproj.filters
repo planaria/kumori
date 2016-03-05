@@ -46,6 +46,9 @@
     <Filter Include="include\serialization\archive">
       <UniqueIdentifier>{80d1e3b8-0ee6-472d-b2db-09ed352b7563}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\sync">
+      <UniqueIdentifier>{259655eb-d1de-4043-b84a-5152286aeee5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -88,9 +91,6 @@
     </ClInclude>
     <ClInclude Include="..\include\kumori\secure_socket.hpp">
       <Filter>include\socket</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\kumori\sync.hpp">
-      <Filter>include\util</Filter>
     </ClInclude>
     <ClInclude Include="..\include\kumori\invalid_operation_exception.hpp">
       <Filter>include\exception</Filter>
@@ -364,6 +364,18 @@
     </ClInclude>
     <ClInclude Include="..\include\kumori\oauth_google.hpp">
       <Filter>include\oauth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\sync.hpp">
+      <Filter>include\sync</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\async_mutex_service.hpp">
+      <Filter>include\sync</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\async_mutex.hpp">
+      <Filter>include\sync</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\sync_lock.hpp">
+      <Filter>include\sync</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

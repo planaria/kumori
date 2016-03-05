@@ -19,20 +19,9 @@ namespace kumori
 		{
 		}
 
-		virtual void begin() override
+		virtual void ping() override
 		{
-			client_.multi();
-		}
-
-		virtual void commit() override
-		{
-			client_.exec();
-		}
-
-		virtual void rollback() override
-		{
-			// note: DISCARD IS NOT ROOLBACK
-			client_.discard();
+			client_.ping();
 		}
 
 		virtual boost::optional<std::string> get(const std::string& key) override
@@ -43,11 +32,6 @@ namespace kumori
 		virtual void set(const std::string& key, const std::string& value) override
 		{
 			client_.set(key, value);
-		}
-
-		void ping()
-		{
-			client_.ping();
 		}
 
 	private:

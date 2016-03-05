@@ -3,6 +3,8 @@
 #include "redis_database_connection.hpp"
 #include "redis_database_config.hpp"
 #include "interrupted_exception.hpp"
+#include "async_mutex.hpp"
+#include "sync_lock.hpp"
 
 namespace kumori
 {
@@ -20,13 +22,34 @@ namespace kumori
 			, host_(host)
 			, port_(port)
 			, config_(config)
+			, mutex_(service)
 		{
 		}
 
 		virtual void connect(const std::function<void(database_connection&)>& callback) override
 		{
-			redis_database_connection connection(service_, host_, port_, config_);
-			callback(connection);
+			sync_lock lock(mutex_);
+
+			if (connection_)
+			{
+				try
+				{
+					connection_->ping();
+				}
+				catch (interrupted_exception&)
+				{
+					throw;
+				}
+				catch (...)
+				{
+					connection_.reset();
+				}
+			}
+
+			if (!connection_)
+				connection_ = std::make_unique<redis_database_connection>(service_, host_, port_, config_);
+
+			callback(*connection_);
 		}
 
 	private:
@@ -35,6 +58,9 @@ namespace kumori
 		std::string host_;
 		unsigned short port_;
 		redis_database_config config_;
+
+		std::unique_ptr<redis_database_connection> connection_;
+		async_mutex mutex_;
 
 	};
 
