@@ -26,12 +26,12 @@ namespace kumori
 		}
 
 		template <class Callback>
-		void async_lock(implementation_type& impl, Callback& callback)
+		void async_lock(implementation_type& impl, Callback callback)
 		{
 			{
 				std::lock_guard<std::mutex> lock(mutex_);
 
-				queue_.push_back(std::make_unique<lock_operation<Callback>>(this->get_io_service(), impl, callback));
+				queue_.push_back(std::make_unique<lock_operation<Callback>>(this->get_io_service(), impl, std::move(callback)));
 			}
 
 			cv_.notify_one();
@@ -67,10 +67,10 @@ namespace kumori
 		{
 		public:
 
-			lock_operation(boost::asio::io_service& service, implementation_type& impl, Callback& callback)
+			lock_operation(boost::asio::io_service& service, implementation_type& impl, Callback&& callback)
 				: service_(service)
 				, impl_(impl)
-				, callback_(callback)
+				, callback_(std::move(callback))
 			{
 			}
 

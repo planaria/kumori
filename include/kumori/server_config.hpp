@@ -7,7 +7,7 @@ namespace kumori
 	{
 
 		bool enable_plain = true;
-		unsigned short plain_port = 80;
+		unsigned short plain_port = 8080;
 
 		bool enable_ssl = false;
 		unsigned short ssl_port = 443;

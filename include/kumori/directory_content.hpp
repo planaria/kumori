@@ -156,7 +156,7 @@ namespace kumori
 	private:
 
 		template <class Callback>
-		void get_content(const std::string& path, Callback& callback)
+		void get_content(const std::string& path, Callback&& callback)
 		{
 			{
 				auto it = content_map_.find(path);

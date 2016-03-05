@@ -14,9 +14,9 @@ namespace kumori
 		}
 
 		template <class Callback>
-		void async_lock(Callback& callback)
+		void async_lock(Callback&& callback)
 		{
-			this->get_service().async_lock(this->get_implementation(), callback);
+			this->get_service().async_lock(this->get_implementation(), std::forward<Callback>(callback));
 		}
 
 		void unlock()
