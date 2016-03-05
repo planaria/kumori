@@ -377,6 +377,9 @@
     <ClInclude Include="..\include\kumori\sync_lock.hpp">
       <Filter>include\sync</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\kumori\session_manager_config.hpp">
+      <Filter>include\session-manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

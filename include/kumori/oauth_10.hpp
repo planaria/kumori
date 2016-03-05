@@ -59,7 +59,7 @@ namespace kumori
 			if (callback_confirmed_it->second != "true")
 				BOOST_THROW_EXCEPTION(oauth_exception());
 
-			session_manager manager(database_, context);
+			session_manager manager(database_, context, config_.session_manager);
 			manager.begin_oauth(config_.site_name, token_it->second, token_secret_it->second);
 
 			http_response& res = context.response();
@@ -84,7 +84,7 @@ namespace kumori
 			if (denied_it != params.end())
 				BOOST_THROW_EXCEPTION(oauth_exception());
 
-			session_manager manager(database_, context);
+			session_manager manager(database_, context, config_.session_manager);
 			std::string token_secret = manager.get().oauth_token_secret;
 			if (!manager.verify_oauth_token(config_.site_name, token_it->second))
 				BOOST_THROW_EXCEPTION(oauth_exception());

@@ -85,7 +85,7 @@ namespace kumori
 
 			auto user_id_info = get_user_id_info(access_token);
 
-			session_manager manager(database_, context);
+			session_manager manager(database_, context, config_.session_manager);
 			manager.sign_in(config_.site_name, user_id_info.first, user_id_info.second);
 		}
 

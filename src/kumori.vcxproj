@@ -158,6 +158,7 @@
     <ClInclude Include="..\include\kumori\serialization.hpp" />
     <ClInclude Include="..\include\kumori\serialize_split.hpp" />
     <ClInclude Include="..\include\kumori\session.hpp" />
+    <ClInclude Include="..\include\kumori\session_manager_config.hpp" />
     <ClInclude Include="..\include\kumori\string_code.hpp" />
     <ClInclude Include="..\include\kumori\base64_util.hpp" />
     <ClInclude Include="..\include\kumori\char_table.hpp" />

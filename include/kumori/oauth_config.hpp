@@ -1,6 +1,6 @@
 #pragma once
 #include "url.hpp"
-#include "redis_client_config.hpp"
+#include "session_manager_config.hpp"
 
 namespace kumori
 {
@@ -12,6 +12,8 @@ namespace kumori
 		url access_token_url;
 		url callback_url;
 		std::string certificate;
+
+		session_manager_config session_manager;
 	};
 
 }

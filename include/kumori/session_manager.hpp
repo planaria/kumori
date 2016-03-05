@@ -1,4 +1,5 @@
 #pragma once
+#include "session_manager_config.hpp"
 #include "session.hpp"
 #include "user_info.hpp"
 #include "database.hpp"
@@ -13,9 +14,10 @@ namespace kumori
 	{
 	public:
 
-		session_manager(database& database, http_server_context& context)
+		session_manager(database& database, http_server_context& context, const session_manager_config& config)
 			: database_(database)
 			, context_(context)
+			, config_(config)
 		{
 			http_request& req = context.request();
 			http_response& res = context.response();
@@ -29,14 +31,16 @@ namespace kumori
 				database.connect([&](database_connection& con)
 				{
 					auto s = kumori::get<session>(con, "session", session_id_);
+					if (!s)
+						return;
 
-					if (s)
-					{
-						session_ = std::move(*s);
-						session_.timestamp = now;
-						con.set("session", session_id_, session_);
-						found = true;
-					}
+					if (s->timestamp + config_.session_life_time < now)
+						return;
+
+					session_ = std::move(*s);
+					session_.timestamp = now;
+					con.set("session", session_id_, session_);
+					found = true;
 				});
 
 				if (found)
@@ -137,6 +141,7 @@ namespace kumori
 
 		database& database_;
 		http_server_context& context_;
+		session_manager_config config_;
 
 		boost::uuids::uuid session_id_;
 		session session_;
