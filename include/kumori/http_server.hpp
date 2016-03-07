@@ -29,7 +29,10 @@ namespace kumori
 				stream.exceptions(std::ios_base::badbit);
 
 				if (stream.peek() == EOF)
+				{
+					stream.clear();
 					break;
+				}
 
 				stream.exceptions(std::ios_base::eofbit | std::ios_base::failbit | std::ios_base::badbit);
 
