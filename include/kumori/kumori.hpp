@@ -6,6 +6,8 @@
 #include <deque>
 #include <bitset>
 #include <functional>
+#include <locale>
+#include <clocale>
 #include <memory>
 #include <thread>
 #include <mutex>
@@ -38,6 +40,15 @@
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include <boost/uuid/uuid_generators.hpp>
+#include <boost/log/trivial.hpp>
+#include <boost/log/core.hpp>
+#include <boost/log/expressions.hpp>
+#include <boost/log/sinks/text_ostream_backend.hpp>
+#include <boost/log/sinks/async_frontend.hpp>
+#include <boost/log/support/date_time.hpp>
+#include <boost/log/utility/setup/common_attributes.hpp>
+#include <boost/locale.hpp>
+#include <boost/core/null_deleter.hpp>
 #include <boost/utility.hpp>
 #include <boost/utility/in_place_factory.hpp>
 #include <boost/cast.hpp>
@@ -75,3 +86,5 @@
 #include "oauth_google.hpp"
 
 #include "io_processor.hpp"
+
+#include "log_initializer.hpp"

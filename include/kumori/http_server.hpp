@@ -90,13 +90,16 @@ namespace kumori
 					{
 						throw;
 					}
-					catch (std::exception&)
+					catch (std::exception& e)
 					{
+						BOOST_LOG_TRIVIAL(error) << e.what();
 						BOOST_THROW_EXCEPTION(http_exception(http_status_code::internal_service_error));
 					}
 				}
 				catch (http_exception& e)
 				{
+					BOOST_LOG_TRIVIAL(error) << e.what();
+
 					res.set_status_code(e.status_code());
 
 					try

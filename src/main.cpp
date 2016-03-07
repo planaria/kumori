@@ -32,6 +32,8 @@ int main(int /*argc*/, char* /*argv*/[])
 {
 	try
 	{
+		kumori::log_initializer log;
+
 		boost::asio::io_service service;
 
 		application_server server(service);

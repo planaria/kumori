@@ -122,6 +122,8 @@ namespace kumori
 
 				con.set("user-info", *user_id, user_info);
 			});
+
+			BOOST_LOG_TRIVIAL(trace) << "Sign in (" << encode_url(user_info.name) << ")";
 		}
 
 		void sign_out()
@@ -129,12 +131,17 @@ namespace kumori
 			if (!session_.user_id)
 				return;
 
-			session_.user_id = boost::none;
+			boost::optional<user_info> info;
 
 			database_.connect([&](database_connection& con)
 			{
+				info = kumori::get<user_info>(con, "user-info", *session_.user_id);
+				session_.user_id = boost::none;
 				con.set("session", session_id_, session_);
 			});
+
+			if (info)
+				BOOST_LOG_TRIVIAL(trace) << "Sign out (" << encode_url(info->name) << ")";
 		}
 
 	private:

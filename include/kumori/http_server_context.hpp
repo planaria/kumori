@@ -131,6 +131,8 @@ namespace kumori
 			if (!is_valid_path(original_path))
 				BOOST_THROW_EXCEPTION(http_exception(http_status_code::bad_request));
 
+			BOOST_LOG_TRIVIAL(trace) << req.get_method() << " " << original_path;
+
 			auto pathEnd = std::find(original_path.begin(), original_path.end(), '?');
 
 			std::string path;
