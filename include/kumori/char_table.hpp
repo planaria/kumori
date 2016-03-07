@@ -11,12 +11,12 @@ namespace kumori
 		explicit char_table(Pred pred)
 		{
 			for (int i = 0; i < CHAR_MAX; ++i)
-				table_.set(i, pred(static_cast<char>(i)));
+				table_.set(i, pred(static_cast<unsigned char>(i)));
 		}
 
 		bool operator ()(char c) const
 		{
-			return table_.test(static_cast<std::size_t>(c));
+			return table_.test(static_cast<unsigned char>(c));
 		}
 
 	private:
