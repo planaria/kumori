@@ -21,6 +21,10 @@
 #define BOOST_USE_WINFIBERS
 #endif
 
+#pragma warning(disable: 4503)
+
+#pragma warning(push)
+#pragma warning(disable: 4244)
 #include <boost/filesystem.hpp>
 #include <boost/signals2/signal.hpp>
 #include <boost/asio.hpp>
@@ -41,6 +45,7 @@
 #include <boost/utility.hpp>
 #include <boost/utility/in_place_factory.hpp>
 #include <boost/cast.hpp>
+#pragma warning(pop)
 
 #include <openssl/md5.h>
 #include <openssl/hmac.h>
