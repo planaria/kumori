@@ -71,7 +71,7 @@ namespace kumori
 
 				buffer_.resize(buffer_.size() - 2);
 
-				std::size_t size;
+				std::streamsize size;
 				if (!to_integer(buffer_, size, 16))
 					BOOST_THROW_EXCEPTION(stream_exception());
 
@@ -86,7 +86,7 @@ namespace kumori
 
 			BOOST_ASSERT(state_ == state::chunk);
 
-			if (remain_ < static_cast<std::size_t>(n))
+			if (remain_ < n)
 				n = remain_;
 
 			n = boost::iostreams::read(source, s, n);
@@ -112,7 +112,7 @@ namespace kumori
 		};
 
 		state state_ = state::size;
-		std::size_t remain_ = 0;
+		std::streamsize remain_ = 0;
 		std::string buffer_;
 		bool eof_ = false;
 

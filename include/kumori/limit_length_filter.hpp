@@ -15,7 +15,7 @@ namespace kumori
 		{
 		};
 
-		explicit limit_length_filter(std::size_t length)
+		explicit limit_length_filter(std::streamsize length)
 			: remain_(length)
 		{
 		}
@@ -26,7 +26,7 @@ namespace kumori
 			if (remain_ == 0)
 				return -1;
 
-			if (remain_ < static_cast<std::size_t>(n))
+			if (remain_ < n)
 				n = remain_;
 
 			n = boost::iostreams::read(source, s, n);
@@ -40,7 +40,7 @@ namespace kumori
 
 	private:
 
-		std::size_t remain_;
+		std::streamsize remain_;
 
 	};
 
