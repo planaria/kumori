@@ -59,7 +59,7 @@ namespace kumori
 					std::iostream stream(&sb);
 					stream.exceptions(std::ios_base::eofbit | std::ios_base::failbit | std::ios_base::badbit);
 
-					server_.derived().on_connected(stream);
+					server_.derived().on_connected(*socket_, stream);
 				}
 				catch (...)
 				{

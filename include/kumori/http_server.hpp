@@ -22,7 +22,7 @@ namespace kumori
 		{
 		}
 
-		void on_connected(std::iostream& stream)
+		void on_connected(socket& socket, std::iostream& stream)
 		{
 			for (std::size_t keep_alive_count = config_.maximum_keep_alive_requests; keep_alive_count != 0; --keep_alive_count)
 			{
