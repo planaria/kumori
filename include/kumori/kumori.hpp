@@ -15,12 +15,6 @@
 #include <random>
 #include <utility>
 
-#define BOOST_ASIO_HAS_MOVE
-
-#ifdef _MSC_VER
-#define BOOST_USE_WINFIBERS
-#endif
-
 #pragma warning(disable: 4503)
 
 #pragma warning(push)
@@ -49,11 +43,6 @@
 
 #include <openssl/md5.h>
 #include <openssl/hmac.h>
-
-#ifdef _MSC_VER
-#pragma comment(lib, "libeay32.lib")
-#pragma comment(lib, "ssleay32.lib")
-#endif
 
 #include <picojson.h>
 
