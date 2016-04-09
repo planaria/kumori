@@ -35,32 +35,14 @@ int main(int /*argc*/, char* /*argv*/[])
 		boost::asio::io_service service;
 
 		application_server server(service);
-
 		server.start();
 
-		boost::asio::signal_set signals(service);
+		kumori::io_processor processor(service, 2);
 
-		signals.add(SIGINT);
-		signals.add(SIGTERM);
-
-#ifdef SIGBREAK
-		signals.add(SIGBREAK);
-#endif
-
-#ifdef SIGQUIT
-		signals.add(SIGQUIT);
-#endif
-
-		signals.async_wait([&](const boost::system::error_code& error, int /*signal_number*/)
+		processor.join_signal([&]()
 		{
-			if (error == boost::asio::error::operation_aborted)
-				return;
-
 			server.stop();
 		});
-
-		kumori::io_processor processor(service, 2);
-		processor.join();
 	}
 	catch (std::exception& e)
 	{

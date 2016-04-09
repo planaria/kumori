@@ -27,6 +27,30 @@ namespace kumori
 			}
 		}
 
+		template <class Callback>
+		void join_signal(Callback&& callback)
+		{
+			boost::asio::signal_set signals(service_);
+
+			signals.add(SIGINT);
+			signals.add(SIGTERM);
+
+#ifdef SIGBREAK
+			signals.add(SIGBREAK);
+#endif
+
+#ifdef SIGQUIT
+			signals.add(SIGQUIT);
+#endif
+
+			signals.async_wait([&](const boost::system::error_code& error, int /*signal_number*/)
+			{
+				callback();
+			});
+
+			join();
+		}
+
 		void join()
 		{
 			for (std::thread& thread : threads_)
