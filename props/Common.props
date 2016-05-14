@@ -10,8 +10,11 @@
     <ClCompile />
     <ClCompile>
       <AdditionalIncludeDirectories>$(SolutionDir)include;$(SolutionDir)ext\cb_tree\include;$(SolutionDir)ext\picojson;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_SCL_SECURE=0;NOMINMAX;_WIN32_WINNT=0x0A00;BOOST_IOSTREAMS_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_SCL_SECURE=0;NOMINMAX;_WIN32_WINNT=0x0A00;_ENABLE_ATOMIC_ALIGNMENT_FIX;BOOST_IOSTREAMS_NO_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <Link>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
   </ItemDefinitionGroup>
   <ItemGroup />
 </Project>

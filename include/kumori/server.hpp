@@ -132,10 +132,19 @@ namespace kumori
 				}
 
 				std::unique_ptr<socket> socket;
-				if (secure)
-					socket = std::make_unique<secure_socket>(std::move(*raw_socket), *config_.ssl_context);
-				else
-					socket = std::make_unique<normal_socket>(std::move(*raw_socket));
+
+				try
+				{
+					if (secure)
+						socket = std::make_unique<secure_socket>(std::move(*raw_socket), *config_.ssl_context);
+					else
+						socket = std::make_unique<normal_socket>(std::move(*raw_socket));
+				}
+				catch (...)
+				{
+					on_ready(context);
+					throw;
+				}
 
 				context->start(std::move(socket));
 			});
