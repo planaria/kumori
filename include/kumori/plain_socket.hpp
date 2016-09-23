@@ -4,21 +4,21 @@
 namespace kumori
 {
 
-	class normal_socket : public socket_adaptor<normal_socket>
+	class plain_socket : public socket_adaptor<plain_socket>
 	{
 	public:
 
-		explicit normal_socket(boost::asio::io_service& service)
+		explicit plain_socket(boost::asio::io_service& service)
 			: socket_(service)
 		{
 		}
 
-		explicit normal_socket(boost::asio::ip::tcp::socket&& socket)
+		explicit plain_socket(boost::asio::ip::tcp::socket&& socket)
 			: socket_(std::move(socket))
 		{
 		}
 
-		~normal_socket()
+		~plain_socket()
 		{
 			boost::system::error_code err;
 			socket_.close(err);

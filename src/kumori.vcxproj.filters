@@ -77,9 +77,6 @@
     <ClInclude Include="..\include\kumori\socket.hpp">
       <Filter>include\socket</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\kumori\normal_socket.hpp">
-      <Filter>include\socket</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\kumori\interrupted_exception.hpp">
       <Filter>include\exception</Filter>
     </ClInclude>
@@ -379,6 +376,9 @@
     </ClInclude>
     <ClInclude Include="..\include\kumori\session_manager_config.hpp">
       <Filter>include\session-manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\plain_socket.hpp">
+      <Filter>include\socket</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

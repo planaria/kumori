@@ -1,7 +1,7 @@
 #pragma once
 #include "server_config.hpp"
 #include "server_context.hpp"
-#include "normal_socket.hpp"
+#include "plain_socket.hpp"
 #include "secure_socket.hpp"
 #include "invalid_operation_exception.hpp"
 
@@ -138,7 +138,7 @@ namespace kumori
 					if (secure)
 						socket = std::make_unique<secure_socket>(std::move(*raw_socket), *config_.ssl_context);
 					else
-						socket = std::make_unique<normal_socket>(std::move(*raw_socket));
+						socket = std::make_unique<plain_socket>(std::move(*raw_socket));
 				}
 				catch (...)
 				{

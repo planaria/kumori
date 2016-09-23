@@ -1,6 +1,6 @@
 #pragma once
 #include "client_config.hpp"
-#include "normal_socket.hpp"
+#include "plain_socket.hpp"
 #include "secure_socket.hpp"
 #include "socket_streambuf.hpp"
 #include "sync.hpp"
@@ -42,7 +42,7 @@ namespace kumori
 			if (config.ssl_context)
 				socket = std::make_unique<secure_socket>(service, *config.ssl_context);
 			else
-				socket = std::make_unique<normal_socket>(service);
+				socket = std::make_unique<plain_socket>(service);
 
 			boost::asio::ip::tcp::resolver resolver(service);
 			boost::asio::ip::tcp::resolver::query query(host, boost::lexical_cast<std::string>(port));

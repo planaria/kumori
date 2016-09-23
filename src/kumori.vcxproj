@@ -203,7 +203,7 @@
     <ClInclude Include="..\include\kumori\invalid_operation_exception.hpp" />
     <ClInclude Include="..\include\kumori\io_processor.hpp" />
     <ClInclude Include="..\include\kumori\kumori.hpp" />
-    <ClInclude Include="..\include\kumori\normal_socket.hpp" />
+    <ClInclude Include="..\include\kumori\plain_socket.hpp" />
     <ClInclude Include="..\include\kumori\output_archive.hpp" />
     <ClInclude Include="..\include\kumori\oauth.hpp" />
     <ClInclude Include="..\include\kumori\oauth_10.hpp" />
