@@ -54,10 +54,10 @@
     <ClCompile Include="main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\boost_iostreams_zlib.gzip.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\boost_iostreams_zlib-src.gzip.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\boost_iostreams_zlib.zlib.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\boost_iostreams_zlib-src.zlib.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>

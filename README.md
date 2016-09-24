@@ -12,7 +12,7 @@ A server library for C++
 - Visual Studio 2015
 
 ### External Libraries
-- Boost C++ Libraries (>= 1.60.0)
+- Boost C++ Libraries (>= 1.61.0)
 - OpenSSL (>= 1.0.2)
 - zlib (>= 1.2.8.7)
 - [picojson](https://github.com/kazuho/picojson)

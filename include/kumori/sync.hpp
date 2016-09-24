@@ -10,32 +10,28 @@ namespace kumori
 
 		sync(boost::asio::io_service& service, const std::function<void()>& entry_point, std::size_t stack_size)
 			: entry_point_(entry_point)
-			, stack_allocator_(stack_size)
 			, timer_(service)
+			, context_(&sync::callback)
 		{
-			stack_ = stack_allocator_.allocate();
-			context_ = boost::context::make_fcontext(stack_.sp, stack_.size, &sync::callback);
 		}
 
 		~sync()
 		{
-			stack_allocator_.deallocate(stack_);
 		}
 
 		void resume()
 		{
 			std::lock_guard<std::mutex> lock(mutex_);
 			current_impl() = this;
-
-			std::intptr_t param = reinterpret_cast<std::intptr_t>(this);
-			boost::context::jump_fcontext(&original_context_, context_, param);
+			context_ = std::get<0>(context_(this));
 		}
 
 		void suspend()
 		{
 			current_impl() = nullptr;
 			BOOST_ASSERT(!mutex_.try_lock());
-			boost::context::jump_fcontext(&context_, original_context_, 0);
+			BOOST_ASSERT(original_context_);
+			original_context_ = std::get<0>(original_context_(nullptr));
 		}
 
 		template <class Callback>
@@ -75,22 +71,28 @@ namespace kumori
 
 	private:
 
-		static void callback(std::intptr_t param)
+		static boost::context::execution_context<sync*> callback(boost::context::execution_context<sync*> context, sync* s)
 		{
-			reinterpret_cast<sync*>(param)->run();
+			return s->run(std::move(context));
 		}
 
-		void run()
+		boost::context::execution_context<sync*> run(boost::context::execution_context<sync*> context)
 		{
+			original_context_ = std::move(context);
+
 			try
 			{
 				entry_point_();
+			}
+			catch (boost::context::detail::forced_unwind&)
+			{
+				throw;
 			}
 			catch (...)
 			{
 			}
 
-			suspend();
+			return std::move(original_context_);
 		}
 
 		static sync*& current_impl()
@@ -101,16 +103,13 @@ namespace kumori
 
 		std::function<void()> entry_point_;
 
-		boost::context::protected_fixedsize_stack stack_allocator_;
-		boost::context::stack_context stack_;
-
-		boost::context::fcontext_t context_;
-		boost::context::fcontext_t original_context_;
-
 		std::mutex mutex_;
 
 		boost::asio::deadline_timer timer_;
 		std::atomic<bool> interrupted_{ false };
+
+		boost::context::execution_context<sync*> context_;
+		boost::context::execution_context<sync*> original_context_;
 
 	};
 
