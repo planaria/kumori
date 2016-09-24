@@ -6,6 +6,7 @@
 #include "directory_config.hpp"
 #include "http_exception.hpp"
 #include "path_exception.hpp"
+#include "wildcard.hpp"
 
 namespace kumori
 {
@@ -113,10 +114,7 @@ namespace kumori
 			for (auto it = directory_begin; it != directory_end; ++it)
 			{
 				boost::filesystem::path filename = it->path().filename();
-
 				boost::filesystem::path nodename = filename;
-				if (config.omit_extensions.find(filename.extension().string()) != config.omit_extensions.end())
-					nodename.replace_extension();
 
 				if (boost::filesystem::is_directory(it->path()))
 				{
@@ -124,6 +122,12 @@ namespace kumori
 				}
 				else
 				{
+					if (match_wildcard(filename.string(), config.omit_extensions.begin(), config.omit_extensions.end(), false))
+						nodename.replace_extension();
+
+					if (!match_wildcard(filename.string(), config.public_files.begin(), config.public_files.end(), false))
+						continue;
+
 					auto content = load_file(path + nodename.string(), it->path(), config);
 
 					auto it = std::find(config.index_files.begin(), config.index_files.end(), filename.string());

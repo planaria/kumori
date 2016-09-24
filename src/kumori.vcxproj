@@ -251,6 +251,7 @@
     <ClInclude Include="..\include\kumori\url_util.hpp" />
     <ClInclude Include="..\include\kumori\user_info.hpp" />
     <ClInclude Include="..\include\kumori\uuid_serializer.hpp" />
+    <ClInclude Include="..\include\kumori\wildcard.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

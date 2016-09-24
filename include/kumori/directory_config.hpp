@@ -28,10 +28,24 @@ namespace kumori
 			{ ".txt", "text/plain" },
 		};
 
-		std::unordered_set<std::string> omit_extensions
+		std::vector<std::string> omit_extensions
 		{
-			".html",
-			".htm",
+			"*.html",
+			"*.htm",
+		};
+
+		std::vector<std::string> public_files
+		{
+			"*.html",
+			"*.htm",
+			"*.png",
+			"*.jpeg",
+			"*.jpg",
+			"*.ico",
+			"*.css",
+			"*.js",
+			"*.map",
+			"*.txt",
 		};
 
 	};
