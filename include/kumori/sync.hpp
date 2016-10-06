@@ -11,7 +11,8 @@ namespace kumori
 		sync(boost::asio::io_service& service, const std::function<void()>& entry_point, std::size_t stack_size)
 			: entry_point_(entry_point)
 			, timer_(service)
-			, context_(&sync::callback)
+			, stack_(stack_size)
+			, context_(std::allocator_arg_t(), stack_, &sync::callback)
 		{
 		}
 
@@ -107,6 +108,8 @@ namespace kumori
 
 		boost::asio::deadline_timer timer_;
 		std::atomic<bool> interrupted_{ false };
+
+		boost::context::protected_fixedsize_stack stack_;
 
 		boost::context::execution_context<sync*> context_;
 		boost::context::execution_context<sync*> original_context_;
