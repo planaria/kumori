@@ -149,6 +149,7 @@
     <ClInclude Include="..\include\kumori\archive_mode.hpp" />
     <ClInclude Include="..\include\kumori\async_mutex.hpp" />
     <ClInclude Include="..\include\kumori\async_mutex_service.hpp" />
+    <ClInclude Include="..\include\kumori\csrf_token_content.hpp" />
     <ClInclude Include="..\include\kumori\csrf_exception.hpp" />
     <ClInclude Include="..\include\kumori\input_archive.hpp" />
     <ClInclude Include="..\include\kumori\oauth_20.hpp" />

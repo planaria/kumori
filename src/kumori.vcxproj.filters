@@ -383,6 +383,9 @@
     <ClInclude Include="..\include\kumori\wildcard.hpp">
       <Filter>include\util</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\kumori\csrf_token_content.hpp">
+      <Filter>include\content</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

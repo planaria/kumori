@@ -61,6 +61,10 @@ namespace kumori
 
 					server_.derived().on_connected(*socket_, stream);
 				}
+				catch (boost::context::detail::forced_unwind&)
+				{
+					throw;
+				}
 				catch (...)
 				{
 				}

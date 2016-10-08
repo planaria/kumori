@@ -40,6 +40,10 @@ namespace kumori
 				{
 					throw;
 				}
+				catch (boost::context::detail::forced_unwind&)
+				{
+					throw;
+				}
 				catch (...)
 				{
 					connection_.reset();

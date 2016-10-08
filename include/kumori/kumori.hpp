@@ -67,5 +67,6 @@
 
 #include "oauth_twitter.hpp"
 #include "oauth_google.hpp"
+#include "csrf_token_content.hpp"
 
 #include "io_processor.hpp"
