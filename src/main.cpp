@@ -9,8 +9,8 @@ class application_server : public kumori::http_server<application_server>
 {
 public:
 
-	explicit application_server(boost::asio::io_service& service)
-		: http_server(service)
+	explicit application_server(boost::asio::io_service& service, const kumori::http_server_config& config)
+		: http_server(service, config)
 	{
 	}
 
@@ -28,13 +28,34 @@ public:
 
 };
 
+class std_logger : public kumori::logger_adaptor
+{
+public:
+
+	virtual void info(const std::string& message) override
+	{
+		std::clog << "info: " << message << std::endl;
+	}
+
+	virtual void error(const std::string& message) override
+	{
+		std::clog << "error: " << message << std::endl;
+	}
+
+};
+
 int main(int /*argc*/, char* /*argv*/[])
 {
 	try
 	{
 		boost::asio::io_service service;
 
-		application_server server(service);
+		kumori::http_server_config config;
+
+		std_logger logger;
+		config.logger = &logger;
+
+		application_server server(service, config);
 		server.start();
 
 		kumori::io_processor processor(service, 2);

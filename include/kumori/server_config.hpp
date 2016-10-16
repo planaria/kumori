@@ -1,4 +1,5 @@
 #pragma once
+#include "logger.hpp"
 
 namespace kumori
 {
@@ -17,6 +18,8 @@ namespace kumori
 		std::size_t stack_size_per_connection = 102400;
 		std::size_t socket_buffer_size = 1024;
 		boost::posix_time::time_duration socket_timeout = boost::posix_time::seconds(10);
+
+		logger* logger = nullptr;
 
 	};
 

@@ -152,6 +152,8 @@
     <ClInclude Include="..\include\kumori\csrf_token_content.hpp" />
     <ClInclude Include="..\include\kumori\csrf_exception.hpp" />
     <ClInclude Include="..\include\kumori\input_archive.hpp" />
+    <ClInclude Include="..\include\kumori\logger.hpp" />
+    <ClInclude Include="..\include\kumori\logger_adaptor.hpp" />
     <ClInclude Include="..\include\kumori\oauth_20.hpp" />
     <ClInclude Include="..\include\kumori\oauth_google.hpp" />
     <ClInclude Include="..\include\kumori\optional_serializer.hpp" />

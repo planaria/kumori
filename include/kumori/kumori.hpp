@@ -31,6 +31,7 @@
 #include <boost/date_time.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/algorithm/string.hpp>
+#include <boost/format.hpp>
 #include <boost/optional.hpp>
 #include <boost/variant.hpp>
 #include <boost/uuid/uuid.hpp>
@@ -70,3 +71,5 @@
 #include "csrf_token_content.hpp"
 
 #include "io_processor.hpp"
+
+#include "logger_adaptor.hpp"

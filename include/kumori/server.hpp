@@ -35,6 +35,9 @@ namespace kumori
 			if (running_)
 				BOOST_THROW_EXCEPTION(invalid_operation_exception());
 
+			if (config_.logger)
+				config_.logger->server_starting();
+
 			contexts_.resize(config_.num_maximum_connections);
 			context_stack_ = std::make_unique<boost::lockfree::stack<context*>>(config_.num_maximum_connections);
 
@@ -42,12 +45,18 @@ namespace kumori
 			{
 				boost::asio::ip::tcp::endpoint plain_end_point(boost::asio::ip::tcp::v6(), config_.plain_port);
 				plain_accceptor_ = std::make_unique<acceptor>(service_, plain_end_point);
+
+				if (config_.logger)
+					config_.logger->server_listen(false, config_.plain_port);
 			}
 
 			if (config_.enable_ssl)
 			{
 				boost::asio::ip::tcp::endpoint ssl_end_point(boost::asio::ip::tcp::v6(), config_.ssl_port);
 				ssl_accceptor_ = std::make_unique<acceptor>(service_, ssl_end_point);
+
+				if (config_.logger)
+					config_.logger->server_listen(true, config_.ssl_port);
 			}
 
 			std::generate(contexts_.begin(), contexts_.end(),
@@ -63,12 +72,18 @@ namespace kumori
 				accept(true);
 
 			running_ = true;
+
+			if (config_.logger)
+				config_.logger->server_started();
 		}
 
 		void stop()
 		{
 			if (!running_)
 				BOOST_THROW_EXCEPTION(invalid_operation_exception());
+
+			if (config_.logger)
+				config_.logger->server_stopping();
 
 			std::size_t count_stopped = 0;
 
@@ -98,6 +113,9 @@ namespace kumori
 			context_stack_.reset();
 
 			running_ = false;
+
+			if (config_.logger)
+				config_.logger->server_stopped();
 		}
 
 	private:

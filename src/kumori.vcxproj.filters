@@ -49,6 +49,9 @@
     <Filter Include="include\sync">
       <UniqueIdentifier>{259655eb-d1de-4043-b84a-5152286aeee5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\logging">
+      <UniqueIdentifier>{dba79f5f-14f3-4672-879e-a2b7e17695a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -385,6 +388,12 @@
     </ClInclude>
     <ClInclude Include="..\include\kumori\csrf_token_content.hpp">
       <Filter>include\content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\logger.hpp">
+      <Filter>include\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\kumori\logger_adaptor.hpp">
+      <Filter>include\logging</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

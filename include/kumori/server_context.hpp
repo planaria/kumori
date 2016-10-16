@@ -59,15 +59,26 @@ namespace kumori
 					std::iostream stream(&sb);
 					stream.exceptions(std::ios_base::eofbit | std::ios_base::failbit | std::ios_base::badbit);
 
+					if (config_.logger)
+						config_.logger->server_accept(socket_->raw_socket().remote_endpoint());
+
 					server_.derived().on_connected(*socket_, stream);
 				}
 				catch (boost::context::detail::forced_unwind&)
 				{
+					if (config_.logger)
+						config_.logger->server_disconnect(socket_->raw_socket().remote_endpoint());
+
 					throw;
 				}
 				catch (...)
 				{
+					if (config_.logger)
+						config_.logger->exception();
 				}
+
+				if (config_.logger)
+					config_.logger->server_disconnect(socket_->raw_socket().remote_endpoint());
 
 				socket_.reset();
 			}

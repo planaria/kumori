@@ -67,6 +67,9 @@ namespace kumori
 
 					context.validate_headers();
 
+					if (config_.logger)
+						config_.logger->http_server_request(req);
+
 					try
 					{
 						switch (req.get_method())
@@ -97,6 +100,9 @@ namespace kumori
 				}
 				catch (http_exception& e)
 				{
+					if (config_.logger)
+						config_.logger->exception();
+
 					res.set_status_code(e.status_code());
 
 					try
