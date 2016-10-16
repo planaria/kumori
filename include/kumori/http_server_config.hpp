@@ -12,9 +12,9 @@ namespace kumori
 	{
 
 		std::size_t maximum_keep_alive_requests = 10;
-		boost::posix_time::time_duration keep_alive_timeout = boost::posix_time::seconds(10);
+		boost::posix_time::time_duration keep_alive_timeout = boost::posix_time::minutes(5);
 
-		boost::posix_time::time_duration session_life_time = boost::posix_time::time_duration(8760, 0, 0);
+		boost::posix_time::time_duration session_life_time = boost::posix_time::hours(24 * 365);
 
 		std::size_t maximum_path_length = 2048;
 		std::streamsize maximum_request_content_length = 102400;

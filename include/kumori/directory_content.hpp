@@ -82,11 +82,23 @@ namespace kumori
 
 			auto it = config.extension_mime_types.find(file.extension().string());
 
-			boost::filesystem::ifstream stream(file, std::ios_base::binary);
-			std::istreambuf_iterator<char> stream_begin(stream);
-			std::istreambuf_iterator<char> stream_end;
+			boost::filesystem::ifstream stream;
+			stream.exceptions(std::ios::eofbit | std::ios::failbit | std::ios::badbit);
 
-			std::string content_str(stream_begin, stream_end);
+			std::vector<char> buffer(8 * 1024 * 1024);
+			stream.rdbuf()->pubsetbuf(buffer.data(), buffer.size());
+
+			stream.open(file, std::ios_base::binary);
+
+			std::string content_str;
+
+			stream.seekg(0, std::ios::end);
+			std::streamsize size = stream.tellg();
+			content_str.reserve(boost::numeric_cast<std::size_t>(size));
+			stream.seekg(0, std::ios::beg);
+
+			content_str.assign(std::istreambuf_iterator<char>(stream), std::istreambuf_iterator<char>());
+
 			std::string mime_type = it != config.extension_mime_types.end() ? it->second : config.unknown_mime_type;
 
 			auto conetnt = std::make_shared<static_content>(std::move(content_str), std::move(mime_type));
