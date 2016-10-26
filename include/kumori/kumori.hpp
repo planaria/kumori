@@ -15,10 +15,14 @@
 #include <random>
 #include <utility>
 
+#ifdef _MSC_VER
 #pragma warning(disable: 4503)
+#endif
 
+#ifdef _MSC_VER
 #pragma warning(push)
 #pragma warning(disable: 4244)
+#endif
 #include <boost/filesystem.hpp>
 #include <boost/signals2/signal.hpp>
 #include <boost/asio.hpp>
@@ -40,7 +44,9 @@
 #include <boost/utility.hpp>
 #include <boost/utility/in_place_factory.hpp>
 #include <boost/cast.hpp>
+#ifdef _MSC_VER
 #pragma warning(pop)
+#endif
 
 #include <openssl/md5.h>
 #include <openssl/hmac.h>

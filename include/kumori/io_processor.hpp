@@ -43,7 +43,7 @@ namespace kumori
 			signals.add(SIGQUIT);
 #endif
 
-			signals.async_wait([&](const boost::system::error_code& error, int /*signal_number*/)
+			signals.async_wait([&](const boost::system::error_code& /*error*/, int /*signal_number*/)
 			{
 				callback();
 			});
